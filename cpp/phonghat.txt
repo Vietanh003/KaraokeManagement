@@ -1,0 +1,15 @@
+P01
+Phòng VIP
+15
+P02
+Phòng Gia Đình
+10
+P03
+Phòng Cách Âm
+22
+P04
+Phòng Nhỏ
+7
+P05
+Phòng Karaoke LED
+18
