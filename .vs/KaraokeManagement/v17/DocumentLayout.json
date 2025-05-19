@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\java\\HashMapExamples.java||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:java\\HashMapExamples.java||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\CustomerBST.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:cpp\\CustomerBST.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\karaoke.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:cpp\\karaoke.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -39,38 +35,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "HashMapExamples.java",
-              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\java\\HashMapExamples.java",
-              "RelativeDocumentMoniker": "java\\HashMapExamples.java",
-              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\java\\HashMapExamples.java",
-              "RelativeToolTip": "java\\HashMapExamples.java",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001630|",
-              "WhenOpened": "2025-05-06T07:25:01.762Z",
+              "Title": "karaoke.cpp",
+              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\karaoke.cpp",
+              "RelativeDocumentMoniker": "cpp\\karaoke.cpp",
+              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\karaoke.cpp",
+              "RelativeToolTip": "cpp\\karaoke.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-05-18T12:05:25.249Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CustomerBST.c",
-              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\CustomerBST.c",
-              "RelativeDocumentMoniker": "cpp\\CustomerBST.c",
-              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\CustomerBST.c",
-              "RelativeToolTip": "cpp\\CustomerBST.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-05-06T07:23:22.718Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "main.c",
               "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\main.c",
               "RelativeDocumentMoniker": "cpp\\main.c",
               "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\main.c",
               "RelativeToolTip": "cpp\\main.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2025-05-06T07:23:21.245Z",
               "EditorCaption": ""
