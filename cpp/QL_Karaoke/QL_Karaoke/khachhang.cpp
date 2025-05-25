@@ -58,6 +58,7 @@ Node* docKhachHangTuFile(const wchar_t* ten_file) {
 }
 
 Node* themKhachHangMoi(Node* goc, const wchar_t* ma_khach_hang, const wchar_t* ten, const wchar_t* so_dien_thoai, const wchar_t* ten_file) {
+    // Check if customer already exists (using provided ma_khach_hang for initial check)
     KhachHang kh_tim = { 0 };
     wcscpy_s(kh_tim.ma_khach_hang, MAX_ID, ma_khach_hang);
     Node* node_kh = timNode(goc, &kh_tim, soSanhKhachHang);
@@ -67,32 +68,89 @@ Node* themKhachHangMoi(Node* goc, const wchar_t* ma_khach_hang, const wchar_t* t
         return goc;
     }
 
+    // Validate phone number (so_dien_thoai)
+    size_t phone_len = wcslen(so_dien_thoai);
+    if (phone_len != 10) {
+        wprintf(L"Số điện thoại phải có đúng 10 chữ số!\n");
+        return goc;
+    }
+
+    for (size_t i = 0; i < phone_len; i++) {
+        if (!iswdigit(so_dien_thoai[i])) {
+            wprintf(L"Số điện thoại chỉ được chứa các chữ số!\n");
+            return goc;
+        }
+    }
+
+    // Check Vietnamese mobile prefix (03, 05, 07, 08, 09)
+    const wchar_t* valid_prefixes[] = { L"03", L"05", L"07", L"08", L"09" };
+    int valid_prefix = 0;
+    for (size_t i = 0; i < sizeof(valid_prefixes) / sizeof(valid_prefixes[0]); i++) {
+        if (wcsncmp(so_dien_thoai, valid_prefixes[i], 2) == 0) {
+            valid_prefix = 1;
+            break;
+        }
+    }
+    if (!valid_prefix) {
+        wprintf(L"Số điện thoại phải bắt đầu bằng 03, 05, 07, 08 hoặc 09!\n");
+        return goc;
+    }
+
+    // Validate name (ten)
+    size_t name_len = wcslen(ten);
+    if (name_len < 2 || name_len >= MAX_NAME) {
+        wprintf(L"Tên khách hàng phải từ 2 đến %d ký tự!\n", MAX_NAME - 1);
+        return goc;
+    }
+
+    for (size_t i = 0; i < name_len; i++) {
+        if (!iswalpha(ten[i]) && !iswspace(ten[i])) {
+            wprintf(L"Tên khách hàng chỉ được chứa chữ cái và khoảng trắng!\n");
+            return goc;
+        }
+    }
+
+    // Generate automatic ma_khach_hang if not provided or invalid
+    wchar_t new_ma_khach_hang[MAX_ID];
+    if (wcslen(ma_khach_hang) == 0 || wcsncmp(ma_khach_hang, L"KH", 2) != 0) {
+        Node* last_kh = goc;
+        while (last_kh && last_kh->right) last_kh = last_kh->right;
+        taoMaTuDong(L"KH", last_kh ? ((KhachHang*)last_kh->du_lieu)->ma_khach_hang : NULL, new_ma_khach_hang, MAX_ID);
+    }
+    else {
+        wcscpy_s(new_ma_khach_hang, MAX_ID, ma_khach_hang);
+    }
+
     KhachHang* kh = (KhachHang*)malloc(sizeof(KhachHang));
     if (!kh) {
         wprintf(L"Lỗi cấp phát bộ nhớ!\n");
         return goc;
     }
 
-    wcscpy_s(kh->ma_khach_hang, MAX_ID, ma_khach_hang);
+    wcscpy_s(kh->ma_khach_hang, MAX_ID, new_ma_khach_hang);
     wcscpy_s(kh->ten, MAX_NAME, ten);
     wcscpy_s(kh->so_dien_thoai, 15, so_dien_thoai);
     kh->ds_hoa_don = NULL;
 
     goc = chenNode(goc, kh, soSanhKhachHang);
 
+
     FILE* file;
     errno_t err = _wfopen_s(&file, ten_file, L"a,ccs=UTF-8");
     if (err != 0 || !file) {
         wprintf(L"Không mở được file %ls để ghi!\n", ten_file);
+        free(kh);
+        return goc;
     }
     else {
         fwprintf(file, L"%ls\t%ls\t%ls\n", kh->ma_khach_hang, kh->ten, kh->so_dien_thoai);
         fclose(file);
     }
 
-    wprintf(L"Đã thêm khách hàng %ls thành công!\n", ma_khach_hang);
+    wprintf(L"Đã thêm khách hàng %ls thành công!\n", kh->ma_khach_hang);
     return goc;
 }
+
 const wchar_t* timMaKhachHangTheoSoDienThoai(const wchar_t* so_dien_thoai, const wchar_t* ten_file) {
     static wchar_t ma_khach[MAX_ID];
     FILE* file;
@@ -128,43 +186,6 @@ const wchar_t* timMaKhachHangTheoSoDienThoai(const wchar_t* so_dien_thoai, const
     fclose(file);
     return NULL;
 }
-
-
-Node* themKhachHangVoiHoaDon(Node* goc, const wchar_t* ma_khach_hang, const wchar_t* ten, const wchar_t* so_dien_thoai,
-    const wchar_t* ma_hoa_don, const wchar_t* ma_phong, float tong_tien, time_t ngay_thue, time_t gio_thue, time_t gio_ra) {
-    KhachHang kh_tim = { 0 };
-    wcscpy_s(kh_tim.ma_khach_hang, MAX_ID, ma_khach_hang);
-    Node* node_kh = timNode(goc, &kh_tim, soSanhKhachHang);
-
-    if (!node_kh) {
-        KhachHang* kh = (KhachHang*)malloc(sizeof(KhachHang));
-        if (kh) {
-            wcscpy_s(kh->ma_khach_hang, MAX_ID, ma_khach_hang);
-            wcscpy_s(kh->ten, MAX_NAME, ten);
-            wcscpy_s(kh->so_dien_thoai, 15, so_dien_thoai);
-            kh->ds_hoa_don = NULL;
-            goc = chenNode(goc, kh, soSanhKhachHang);
-            node_kh = timNode(goc, kh, soSanhKhachHang);
-        }
-    }
-
-    HoaDon* hd = (HoaDon*)malloc(sizeof(HoaDon));
-    if (hd) {
-        wcscpy_s(hd->ma_hoa_don, MAX_ID, ma_hoa_don);
-        wcscpy_s(hd->ma_khach_hang, MAX_ID, ma_khach_hang);
-        wcscpy_s(hd->ma_phong, MAX_ID, ma_phong);
-        hd->tong_tien = tong_tien;
-        hd->ngay_thue = ngay_thue;
-        hd->gio_thue = gio_thue;
-        hd->gio_ra = gio_ra;
-
-        KhachHang* kh = (KhachHang*)node_kh->du_lieu;
-        kh->ds_hoa_don = chenNode(kh->ds_hoa_don, hd, soSanhHoaDon);
-    }
-
-    return goc;
-}
-
 void lietKeHoaDonTheoKhachHang(Node* goc, const wchar_t* ma_khach_hang) {
     KhachHang kh_tim = { 0 };
     wcscpy_s(kh_tim.ma_khach_hang, MAX_ID, ma_khach_hang);

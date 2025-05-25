@@ -14,8 +14,6 @@ typedef struct KhachHang {
 int soSanhKhachHang(const void* a, const void* b);
 Node* docKhachHangTuFile(const wchar_t* ten_file);
 Node* themKhachHangMoi(Node* goc, const wchar_t* ma_khach_hang, const wchar_t* ten, const wchar_t* so_dien_thoai, const wchar_t* ten_file);
-Node* themKhachHangVoiHoaDon(Node* goc, const wchar_t* ma_khach_hang, const wchar_t* ten, const wchar_t* so_dien_thoai,
-    const wchar_t* ma_hoa_don, const wchar_t* ma_phong, float tong_tien, time_t ngay_thue);
 void lietKeHoaDonTheoKhachHang(Node* goc, const wchar_t* ma_khach_hang);
 void hienThiTatCaKhachHang(Node* goc);
 void hienThiKhachHang(Node* node);

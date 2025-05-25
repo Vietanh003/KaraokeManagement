@@ -1,6 +1,3 @@
-﻿KH001	Tran thi ngoc anh	019191
-KH002	Tran thi b	0191919
-KH003	Tran thi a	0919191
-KH004	An cu	09665544
-KH005	Tran thi dao	091991
-KH006	Nguyen van anh	091919
+﻿
+KH001	Tran Thi Lan	0919282828
+KH002	Nguyen Van Chien	0728282828

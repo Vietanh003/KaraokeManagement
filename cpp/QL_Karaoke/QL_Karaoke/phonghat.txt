@@ -2,3 +2,4 @@
 ka02 Thường 0
 ka03 VIP 0
 ka04 VIP 0
+ka06 Thường 0

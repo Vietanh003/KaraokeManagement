@@ -81,19 +81,19 @@ void themHoaDon(Node** goc_hoa_don, Node* cay_khach_hang, Node* cay_phong_hat, N
 
     const wchar_t* ten_file_khach_hang = L"khachhang.txt";
 
-    // Tìm khách hàng trong file
+    // Tìm khách hàng
     const wchar_t* ma_khach_tim_thay = timMaKhachHangTheoSoDienThoai(so_dien_thoai, ten_file_khach_hang);
     if (ma_khach_tim_thay) {
         wcscpy_s(ma_khach_hang, MAX_ID, ma_khach_tim_thay);
 
-        // Gọi hàm thêm khách hàng mới để chắc chắn khách hàng đã được thêm vào cây
+        // Gọi hàm thêm khách hàng
         Node* new_cay_khach_hang = themKhachHangMoi(cay_khach_hang, ma_khach_hang, L"", so_dien_thoai, ten_file_khach_hang);
         if (new_cay_khach_hang != cay_khach_hang) {
             cay_khach_hang = new_cay_khach_hang;
         }
     }
     else {
-        // Nếu không tìm thấy => thêm mới hoàn toàn
+       
         wprintf(L"Không tìm thấy khách hàng với số điện thoại %ls. Thêm khách hàng mới...\n", so_dien_thoai);
         wchar_t ten[MAX_NAME];
         wprintf(L"Nhập tên khách hàng: ");
@@ -120,7 +120,6 @@ void themHoaDon(Node** goc_hoa_don, Node* cay_khach_hang, Node* cay_phong_hat, N
         }
     }
 
-    // Validate room ID
     wchar_t ma_phong[MAX_ID];
     wprintf(L"Nhập mã phòng: ");
     fgetws(ma_phong, MAX_ID, stdin);
@@ -227,7 +226,7 @@ void themHoaDon(Node** goc_hoa_don, Node* cay_khach_hang, Node* cay_phong_hat, N
         tong_tien += so_luong * don_gia;
     }
 
-    // Create and insert invoice
+    // Tạo hóa đơn
     HoaDon* hd = (HoaDon*)malloc(sizeof(HoaDon));
     if (!hd) {
         wprintf(L"Lỗi cấp phát bộ nhớ!\n");
@@ -305,7 +304,6 @@ void inHoaDon(Node* node, Node* cay_chi_tiet_hoa_don) {
         inHoaDon(node->left, cay_chi_tiet_hoa_don);
         HoaDon* hd = (HoaDon*)node->du_lieu;
 
-        // Validate timestamps
         if (hd->gio_thue == (time_t)-1 || hd->gio_ra == (time_t)-1) {
             wprintf(L"Hóa đơn %ls: Thời gian không hợp lệ!\n", hd->ma_hoa_don);
             return;
@@ -315,7 +313,6 @@ void inHoaDon(Node* node, Node* cay_chi_tiet_hoa_don) {
         localtime_s(&tm_thue, &hd->gio_thue);
         localtime_s(&tm_ra, &hd->gio_ra);
 
-        // Check if localtime_s produced valid results
         if (tm_thue.tm_year < 0 || tm_ra.tm_year < 0) {
             wprintf(L"Hóa đơn %ls: Không thể chuyển đổi thời gian!\n", hd->ma_hoa_don);
             return;

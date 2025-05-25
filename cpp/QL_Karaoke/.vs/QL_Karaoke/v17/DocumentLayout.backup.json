@@ -3,64 +3,20 @@
   "WorkspaceRootPath": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hoadon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\hoadon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\haodon.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\haodon.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\chitiethoadon.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\chitiethoadon.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\chitiethoadon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\chitiethoadon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\chitiethoadon.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\chitiethoadon.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hanghoa.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\hanghoa.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hoadon.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\hoadon.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\khachhang.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\khachhang.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hanghoa.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\hanghoa.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\chitiethoadon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\chitiethoadon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\common.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\common.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hanghoa.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\hanghoa.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\phonghat.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\phonghat.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\khachhang.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\khachhang.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\phonghat.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\phonghat.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\phonghat.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -71,11 +27,51 @@
       "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\khachhang.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\corecrt_wstdio.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hoadon.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\hoadon.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hanghoa.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\hanghoa.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\common.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\common.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\chitiethoadon.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\chitiethoadon.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\phonghat.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\phonghat.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\khachhang.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\khachhang.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hanghoa.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\hanghoa.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\chitiethoadon.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\chitiethoadon.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hoadon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\hoadon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\khachhang.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\khachhang.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\phonghat.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A204CD40-FA9C-45D9-BA33-F556CA1ECE47}|QL_Karaoke\\QL_Karaoke.vcxproj|solutionrelative:QL_Karaoke\\phonghat.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\corecrt_wstdio.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\stdio.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
@@ -88,17 +84,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "main.cpp",
               "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\main.cpp",
               "RelativeDocumentMoniker": "QL_Karaoke\\main.cpp",
-              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\main.cpp",
-              "RelativeToolTip": "QL_Karaoke\\main.cpp",
-              "ViewState": "AgIAAP4AAAAAAAAAAAAcwHAAAAAWAAAAAAAAAA==",
+              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\main.cpp*",
+              "RelativeToolTip": "QL_Karaoke\\main.cpp*",
+              "ViewState": "AgIAACAAAAAAAAAAAAAYwDMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-05-22T04:23:37.975Z",
               "IsPinned": true,
@@ -122,111 +118,72 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "hoadon.cpp",
-              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hoadon.cpp",
-              "RelativeDocumentMoniker": "QL_Karaoke\\hoadon.cpp",
-              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hoadon.cpp",
-              "RelativeToolTip": "QL_Karaoke\\hoadon.cpp",
-              "ViewState": "AgIAAFIAAAAAAAAAAAAkwFoAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-05-22T04:24:45.515Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "hanghoa.cpp",
-              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hanghoa.cpp",
-              "RelativeDocumentMoniker": "QL_Karaoke\\hanghoa.cpp",
-              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hanghoa.cpp",
-              "RelativeToolTip": "QL_Karaoke\\hanghoa.cpp",
-              "ViewState": "AgIAAMEAAAAAAAAAAAAUwMgAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-05-22T04:24:59.835Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "khachhang.cpp",
-              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\khachhang.cpp",
-              "RelativeDocumentMoniker": "QL_Karaoke\\khachhang.cpp",
-              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\khachhang.cpp",
-              "RelativeToolTip": "QL_Karaoke\\khachhang.cpp",
-              "ViewState": "AgIAAFIAAAAAAAAAAAAUwF8AAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-05-18T12:15:50.39Z",
+              "DocumentIndex": 5,
+              "Title": "khachhang.h",
+              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\khachhang.h",
+              "RelativeDocumentMoniker": "QL_Karaoke\\khachhang.h",
+              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\khachhang.h",
+              "RelativeToolTip": "QL_Karaoke\\khachhang.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-22T04:18:19.456Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "phonghat.h",
+              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\phonghat.h",
+              "RelativeDocumentMoniker": "QL_Karaoke\\phonghat.h",
+              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\phonghat.h",
+              "RelativeToolTip": "QL_Karaoke\\phonghat.h",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA4AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-22T04:18:35.237Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "chitiethoadon.cpp",
               "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\chitiethoadon.cpp",
               "RelativeDocumentMoniker": "QL_Karaoke\\chitiethoadon.cpp",
               "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\chitiethoadon.cpp",
               "RelativeToolTip": "QL_Karaoke\\chitiethoadon.cpp",
-              "ViewState": "AgIAADkAAAAAAAAAAAAawEYAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAAAEwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-05-23T07:55:44.561Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "haodon.txt",
-              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\haodon.txt",
-              "RelativeDocumentMoniker": "QL_Karaoke\\haodon.txt",
-              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\haodon.txt",
-              "RelativeToolTip": "QL_Karaoke\\haodon.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-05-22T04:16:21.476Z",
+              "DocumentIndex": 3,
+              "Title": "common.cpp",
+              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\common.cpp",
+              "RelativeDocumentMoniker": "QL_Karaoke\\common.cpp",
+              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\common.cpp",
+              "RelativeToolTip": "QL_Karaoke\\common.cpp",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAAAJUAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-05-22T04:23:20.635Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "chitiethoadon.txt",
-              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\chitiethoadon.txt",
-              "RelativeDocumentMoniker": "QL_Karaoke\\chitiethoadon.txt",
-              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\chitiethoadon.txt",
-              "RelativeToolTip": "QL_Karaoke\\chitiethoadon.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-05-22T04:17:08.17Z",
+              "DocumentIndex": 1,
+              "Title": "hanghoa.cpp",
+              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hanghoa.cpp",
+              "RelativeDocumentMoniker": "QL_Karaoke\\hanghoa.cpp",
+              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hanghoa.cpp",
+              "RelativeToolTip": "QL_Karaoke\\hanghoa.cpp",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAAC0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-05-22T04:24:59.835Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "hanghoa.h",
-              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hanghoa.h",
-              "RelativeDocumentMoniker": "QL_Karaoke\\hanghoa.h",
-              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hanghoa.h",
-              "RelativeToolTip": "QL_Karaoke\\hanghoa.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-22T07:01:34.295Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "chitiethoadon.h",
-              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\chitiethoadon.h",
-              "RelativeDocumentMoniker": "QL_Karaoke\\chitiethoadon.h",
-              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\chitiethoadon.h",
-              "RelativeToolTip": "QL_Karaoke\\chitiethoadon.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-22T12:17:52.786Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "hoadon.h",
               "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hoadon.h",
               "RelativeDocumentMoniker": "QL_Karaoke\\hoadon.h",
@@ -239,33 +196,46 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "hanghoa.h",
+              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hanghoa.h",
+              "RelativeDocumentMoniker": "QL_Karaoke\\hanghoa.h",
+              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hanghoa.h",
+              "RelativeToolTip": "QL_Karaoke\\hanghoa.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-22T07:01:34.295Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "common.h",
+              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\common.h",
+              "RelativeDocumentMoniker": "QL_Karaoke\\common.h",
+              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\common.h",
+              "RelativeToolTip": "QL_Karaoke\\common.h",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAwCUAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-22T04:18:01.15Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "chitiethoadon.h",
+              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\chitiethoadon.h",
+              "RelativeDocumentMoniker": "QL_Karaoke\\chitiethoadon.h",
+              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\chitiethoadon.h",
+              "RelativeToolTip": "QL_Karaoke\\chitiethoadon.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-22T12:17:52.786Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "common.cpp",
-              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\common.cpp",
-              "RelativeDocumentMoniker": "QL_Karaoke\\common.cpp",
-              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\common.cpp",
-              "RelativeToolTip": "QL_Karaoke\\common.cpp",
-              "ViewState": "AgIAADIAAAAAAAAAAAAhwD4AAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-05-22T04:23:20.635Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "hanghoa.txt",
-              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hanghoa.txt",
-              "RelativeDocumentMoniker": "QL_Karaoke\\hanghoa.txt",
-              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hanghoa.txt",
-              "RelativeToolTip": "QL_Karaoke\\hanghoa.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-05-25T08:54:24.289Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
               "Title": "phonghat.txt",
               "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\phonghat.txt",
               "RelativeDocumentMoniker": "QL_Karaoke\\phonghat.txt",
@@ -278,28 +248,78 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 11,
               "Title": "khachhang.txt",
               "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\khachhang.txt",
               "RelativeDocumentMoniker": "QL_Karaoke\\khachhang.txt",
               "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\khachhang.txt",
               "RelativeToolTip": "QL_Karaoke\\khachhang.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
               "WhenOpened": "2025-05-24T16:47:13.541Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "hanghoa.txt",
+              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hanghoa.txt",
+              "RelativeDocumentMoniker": "QL_Karaoke\\hanghoa.txt",
+              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hanghoa.txt",
+              "RelativeToolTip": "QL_Karaoke\\hanghoa.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-05-25T08:54:24.289Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "chitiethoadon.txt",
+              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\chitiethoadon.txt",
+              "RelativeDocumentMoniker": "QL_Karaoke\\chitiethoadon.txt",
+              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\chitiethoadon.txt",
+              "RelativeToolTip": "QL_Karaoke\\chitiethoadon.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-05-25T13:23:00.919Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "stdio.h",
+              "DocumentMoniker": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\stdio.h",
+              "ToolTip": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\stdio.h",
+              "ViewState": "AgIAADkEAAAAAAAAAAAAwEoEAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-22T04:37:03.067Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 14,
-              "Title": "phonghat.cpp",
-              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\phonghat.cpp",
-              "RelativeDocumentMoniker": "QL_Karaoke\\phonghat.cpp",
-              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\phonghat.cpp",
-              "RelativeToolTip": "QL_Karaoke\\phonghat.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAWAAAAAAAAAA==",
+              "Title": "hoadon.cpp",
+              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hoadon.cpp",
+              "RelativeDocumentMoniker": "QL_Karaoke\\hoadon.cpp",
+              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\hoadon.cpp",
+              "RelativeToolTip": "QL_Karaoke\\hoadon.cpp",
+              "ViewState": "AgIAAO8AAAAAAAAAAAAYwP8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-05-22T04:24:21.234Z"
+              "WhenOpened": "2025-05-22T04:24:45.515Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "khachhang.cpp",
+              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\khachhang.cpp",
+              "RelativeDocumentMoniker": "QL_Karaoke\\khachhang.cpp",
+              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\khachhang.cpp",
+              "RelativeToolTip": "QL_Karaoke\\khachhang.cpp",
+              "ViewState": "AgIAAGUAAAAAAAAAAAAYwJ8AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-05-18T12:15:50.39Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -313,49 +333,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "stdio.h",
-              "DocumentMoniker": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\stdio.h",
-              "ToolTip": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\stdio.h",
-              "ViewState": "AgIAADkEAAAAAAAAAAAAwEoEAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-22T04:37:03.067Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "phonghat.h",
-              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\phonghat.h",
-              "RelativeDocumentMoniker": "QL_Karaoke\\phonghat.h",
-              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\phonghat.h",
-              "RelativeToolTip": "QL_Karaoke\\phonghat.h",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA4AAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-22T04:18:35.237Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 16,
-              "Title": "khachhang.h",
-              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\khachhang.h",
-              "RelativeDocumentMoniker": "QL_Karaoke\\khachhang.h",
-              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\khachhang.h",
-              "RelativeToolTip": "QL_Karaoke\\khachhang.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-22T04:18:19.456Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "common.h",
-              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\common.h",
-              "RelativeDocumentMoniker": "QL_Karaoke\\common.h",
-              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\common.h",
-              "RelativeToolTip": "QL_Karaoke\\common.h",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAAwCUAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-22T04:18:01.15Z"
+              "Title": "phonghat.cpp",
+              "DocumentMoniker": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\phonghat.cpp",
+              "RelativeDocumentMoniker": "QL_Karaoke\\phonghat.cpp",
+              "ToolTip": "E:\\BT CTDLvaGT\\\u0110\u1EC1 t\u00E0i 18_\u0110\u1ED3 \u00E1n\\Project_Git\\KaraokeManagement\\cpp\\QL_Karaoke\\QL_Karaoke\\phonghat.cpp",
+              "RelativeToolTip": "QL_Karaoke\\phonghat.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-05-22T04:24:21.234Z"
             }
           ]
         },

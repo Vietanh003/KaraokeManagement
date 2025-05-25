@@ -1,5 +1,4 @@
-﻿// src/common.c
-#include "common.h"
+﻿#include "common.h"
 
 int layChieuCao(Node* node) {
     return node ? node->chieu_cao : 0;

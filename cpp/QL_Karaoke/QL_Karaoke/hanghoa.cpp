@@ -62,7 +62,7 @@ void ghiNodeHangHoa(Node* node, FILE* file) {
     if (!node) return;
     ghiNodeHangHoa(node->left, file);
     HangHoa* hh = (HangHoa*)node->du_lieu;
-    // Kiểm tra và ghi chuỗi với mã hóa UTF-8
+ 
     if (fwprintf(file, L"%ls|%ls|%.2lf|%.2lf\n", hh->ma_hang, hh->ten_hang, hh->gia_tien, hh->giam_gia) < 0) {
         wprintf(L"Lỗi khi ghi dữ liệu hàng hóa %ls vào file!\n", hh->ma_hang);
     }

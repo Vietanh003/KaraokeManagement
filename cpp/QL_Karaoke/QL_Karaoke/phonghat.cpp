@@ -1,5 +1,4 @@
-﻿// src/phonghat.c
-#include "phonghat.h"
+﻿#include "phonghat.h"
 
 int soSanhPhongHat(const void* a, const void* b) {
     return wcscmp(((PhongHat*)a)->ma_phong, ((PhongHat*)b)->ma_phong);

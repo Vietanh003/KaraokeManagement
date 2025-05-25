@@ -9,29 +9,48 @@
 #include <wchar.h>
 
 void hienThiMenu() {
-    wprintf(L"\n===== HỆ THỐNG QUẢN LÝ KARAOKE =====\n");
-    wprintf(L"1. Đọc dữ liệu khách hàng từ file\n");
-    wprintf(L"2. Thêm khách hàng mới với hóa đơn\n");
-    wprintf(L"3. Tìm kiếm và liệt kê hóa đơn theo mã khách hàng\n");
-    wprintf(L"4. Đọc dữ liệu phòng hát từ file\n");
-    wprintf(L"5. Thêm phòng hát mới\n");
-    wprintf(L"6. Thống kê top 3 phòng thuê nhiều nhất\n");
-    wprintf(L"7. Đọc dữ liệu hóa đơn từ file\n");
-    wprintf(L"8. Thêm hóa đơn và chi tiết hóa đơn\n");
-    wprintf(L"9. Tìm kiếm hóa đơn theo số hóa đơn\n");
-    wprintf(L"10. Sắp xếp hóa đơn theo tổng tiền (giảm dần)\n");
-    wprintf(L"11. Sắp xếp hóa đơn theo mã khách hàng (tăng dần)\n");
-    wprintf(L"12. Thống kê doanh thu theo khoảng thời gian\n");
-    wprintf(L"13. Thêm một khách hàng mới\n");
-    wprintf(L"14. Hiển thị tất cả khách hàng\n");
-    wprintf(L"15. Hiển thị tất cả hóa đơn\n");
-    wprintf(L"16. Hiển thị tất cả phòng hát\n");
-    wprintf(L"17. Thêm hàng hóa mới\n");
-    wprintf(L"18. Hiển thị tất cả hàng hóa\n");
-    wprintf(L"19. Chỉnh sửa hàng hóa\n");
-    wprintf(L"20. Xóa hàng hóa\n");
-    wprintf(L"21. Thoát\n");
-    wprintf(L"Nhập lựa chọn (1-21): ");
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    // Set green color for the title
+    SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+
+    // Top border and title
+    wprintf(L"╔════════════════════════════════════╗\n");
+    wprintf(L"║      HỆ THỐNG QUẢN LÝ KARAOKE      ║\n");
+    wprintf(L"╚════════════════════════════════════╝\n");
+
+    // Reset to default color (white text)
+    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+
+    // Menu options with consistent spacing
+    wprintf(L"║  1. Thêm phòng hát mới             ║\n");
+    wprintf(L"║  2. Thêm một khách hàng mới        ║\n");
+    wprintf(L"║  3. Thêm hàng hóa mới              ║\n");
+    wprintf(L"║  4. Thêm hóa đơn và chi tiết hóa đơn║\n");
+    wprintf(L"║  5. Hiển thị tất cả khách hàng     ║\n");
+    wprintf(L"║  6. Hiển thị tất cả phòng hát      ║\n");
+    wprintf(L"║  7. Hiển thị tất cả hàng hóa       ║\n");
+    wprintf(L"║  8. Hiển thị tất cả hóa đơn        ║\n");
+    wprintf(L"║  9. Chỉnh sửa hàng hóa             ║\n");
+    wprintf(L"║ 10. Xóa hàng hóa                   ║\n");
+    wprintf(L"║ 11. Sắp xếp hóa đơn theo tổng tiền ║\n");
+    wprintf(L"║     (giảm dần)                     ║\n");
+    wprintf(L"║ 12. Sắp xếp hóa đơn theo mã khách  ║\n");
+    wprintf(L"║     hàng (tăng dần)                ║\n");
+    wprintf(L"║ 13. Thống kê top 3 phòng thuê nhiều║\n");
+    wprintf(L"║     nhất                           ║\n");
+    wprintf(L"║ 14. Tìm kiếm hóa đơn theo số hóa   ║\n");
+    wprintf(L"║     đơn                            ║\n");
+    wprintf(L"║ 15. Tìm kiếm và liệt kê hóa đơn theo║\n");
+    wprintf(L"║     mã khách hàng                  ║\n");
+    wprintf(L"║ 16. Thống kê doanh thu theo khoảng ║\n");
+    wprintf(L"║     thời gian                      ║\n");
+    wprintf(L"║ 17. Thoát                          ║\n");
+    wprintf(L"╚════════════════════════════════════╝\n");
+
+    SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_INTENSITY);
+    wprintf(L"\nNhập lựa chọn (1-17): ");
+
+    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 }
 
 void xuLyMenu(Node** cay_khach_hang, Node** cay_phong_hat, Node** cay_hoa_don, Node** cay_hang_hoa, Node** cay_chi_tiet_hoa_don) {
@@ -69,25 +88,8 @@ void xuLyMenu(Node** cay_khach_hang, Node** cay_phong_hat, Node** cay_hoa_don, N
         fgetws(input, 10, stdin);
         if (swscanf_s(input, L"%d", &lua_chon) == 1) {
             switch (lua_chon) {
-            case 1:
-                *cay_khach_hang = docKhachHangTuFile(ten_file_khach_hang);
-                wprintf(L"Đã đọc dữ liệu khách hàng từ file %ls\n", ten_file_khach_hang);
-                break;
-            case 2:
-                themHoaDon(cay_hoa_don, *cay_khach_hang, *cay_phong_hat, *cay_hang_hoa, cay_chi_tiet_hoa_don, ten_file_hoa_don, ten_file_chi_tiet);
-                *cay_khach_hang = docKhachHangTuFile(ten_file_khach_hang); // Reload to update customer tree
-                break;
-            case 3:
-                wprintf(L"Nhập mã khách hàng: ");
-                fgetws(ma_khach_hang, MAX_ID, stdin);
-                ma_khach_hang[wcscspn(ma_khach_hang, L"\n")] = 0;
-                lietKeHoaDonTheoKhachHang(*cay_khach_hang, ma_khach_hang);
-                break;
-            case 4:
-                *cay_phong_hat = docPhongHatTuFile(ten_file_phong_hat);
-                wprintf(L"Đã đọc dữ liệu phòng hát từ file %ls\n", ten_file_phong_hat);
-                break;
-            case 5:
+            case 1: // Thêm phòng hát mới
+            {
                 wprintf(L"Nhập mã phòng: ");
                 fgetws(ma_phong, MAX_ID, stdin);
                 ma_phong[wcscspn(ma_phong, L"\n")] = 0;
@@ -110,61 +112,24 @@ void xuLyMenu(Node** cay_khach_hang, Node** cay_phong_hat, Node** cay_hoa_don, N
                 themPhongHatMoi(cay_phong_hat, ma_phong, loai_phong, ten_file_phong_hat);
                 ghiPhongHatRaFile(*cay_phong_hat, ten_file_phong_hat);
                 wprintf(L"Đã thêm phòng hát mới.\n");
-                break;
-            case 6:
-                thongKeTop3Phong(*cay_phong_hat);
-                break;
-            case 7:
-                *cay_hoa_don = docHoaDonTuFile(ten_file_hoa_don);
-                wprintf(L"Đã đọc dữ liệu hóa đơn từ file %ls\n", ten_file_hoa_don);
-                break;
-            case 8:
-                themHoaDon(cay_hoa_don, *cay_khach_hang, *cay_phong_hat, *cay_hang_hoa, cay_chi_tiet_hoa_don, ten_file_hoa_don, ten_file_chi_tiet);
-                *cay_khach_hang = docKhachHangTuFile(ten_file_khach_hang); // Reload to update customer tree
-                break;
-            case 9:
-                wprintf(L"Nhập mã hóa đơn: ");
-                fgetws(ma_hoa_don, MAX_ID, stdin);
-                ma_hoa_don[wcscspn(ma_hoa_don, L"\n")] = 0;
-                timHoaDonTheoMa(*cay_hoa_don, ma_hoa_don);
-                break;
-            case 10:
-           /*     sapXepHoaDonTheoTongTien(*cay_hoa_don, *cay_chi_tiet_hoa_don);*/
-                break;
-            case 11:
-               /* sapXepHoaDonTheoMaKhachHang(*cay_hoa_don, *cay_chi_tiet_hoa_don);*/
-                break;
-            case 12:
-                wprintf(L"Nhập ngày bắt đầu (YYYY-MM-DD): ");
-                fgetws(bat_dau, 20, stdin);
-                bat_dau[wcscspn(bat_dau, L"\n")] = 0;
-                wprintf(L"Nhập ngày kết thúc (YYYY-MM-DD): ");
-                fgetws(ket_thuc, 20, stdin);
-                ket_thuc[wcscspn(ket_thuc, L"\n")] = 0;
-                wprintf(L"Chức năng thống kê doanh thu chưa được triển khai!\n");
-                break;
-            case 13:
-                wprintf(L"Nhập mã khách hàng: ");
-                fgetws(ma_khach_hang, MAX_ID, stdin);
-                ma_khach_hang[wcscspn(ma_khach_hang, L"\n")] = 0;
+            }
+            break;
+
+            case 2: // Thêm một khách hàng mới
+            {
+                wchar_t ma_khach_hang[MAX_ID] = L"";
                 wprintf(L"Nhập tên khách hàng: ");
                 fgetws(ten, MAX_NAME, stdin);
-                ten[wcscspn(ten, L"\n")] = 0;
+                trimString(ten);
                 wprintf(L"Nhập số điện thoại: ");
                 fgetws(so_dien_thoai, 15, stdin);
-                so_dien_thoai[wcscspn(so_dien_thoai, L"\n")] = 0;
+                trimString(so_dien_thoai);
                 *cay_khach_hang = themKhachHangMoi(*cay_khach_hang, ma_khach_hang, ten, so_dien_thoai, ten_file_khach_hang);
-                break;
-            case 14:
-                hienThiTatCaKhachHang(*cay_khach_hang);
-                break;
-            case 15:
-                hienThiTatCaHoaDon(*cay_hoa_don, *cay_chi_tiet_hoa_don);
-                break;
-            case 16:
-                hienThiTatCaPhongHat(*cay_phong_hat);
-                break;
-            case 17: {
+            }
+            break;
+
+            case 3: // Thêm hàng hóa mới
+            {
                 wprintf(L"Nhập tên hàng: ");
                 if (fgetws(ten_hang, MAX_NAME, stdin) == NULL) {
                     wprintf(L"Lỗi đọc tên hàng!\n");
@@ -219,13 +184,42 @@ void xuLyMenu(Node** cay_khach_hang, Node** cay_phong_hat, Node** cay_hoa_don, N
                 } while (!valid_discount);
 
                 themHangHoaMoi(cay_hang_hoa, ten_hang, gia_tien, giam_gia, ten_file_hang_hoa);
-                break;
             }
-            case 18:
-                wprintf(L"Danh sách hàng hóa:\n");
+            break;
+
+            case 4: // Thêm hóa đơn và chi tiết hóa đơn
+            {
+                themHoaDon(cay_hoa_don, *cay_khach_hang, *cay_phong_hat, *cay_hang_hoa, cay_chi_tiet_hoa_don, ten_file_hoa_don, ten_file_chi_tiet);
+                *cay_khach_hang = docKhachHangTuFile(ten_file_khach_hang); // Reload to update customer tree
+            }
+            break;
+
+            case 5: // Hiển thị tất cả khách hàng
+            {
+                hienThiTatCaKhachHang(*cay_khach_hang);
+            }
+            break;
+
+            case 6: // Hiển thị tất cả phòng hát
+            {
+                hienThiTatCaPhongHat(*cay_phong_hat);
+            }
+            break;
+
+            case 7: // Hiển thị tất cả hàng hóa
+            {
                 hienThiTatCaHangHoa(*cay_hang_hoa);
-                break;
-            case 19:
+            }
+            break;
+
+            case 8: // Hiển thị tất cả hóa đơn
+            {
+                hienThiTatCaHoaDon(*cay_hoa_don, *cay_chi_tiet_hoa_don);
+            }
+            break;
+
+            case 9: // Chỉnh sửa hàng hóa
+            {
                 wprintf(L"Nhập mã hàng hóa cần chỉnh sửa: ");
                 if (fgetws(ma_hang, MAX_ID, stdin)) {
                     ma_hang[wcscspn(ma_hang, L"\n")] = 0;
@@ -236,8 +230,11 @@ void xuLyMenu(Node** cay_khach_hang, Node** cay_phong_hat, Node** cay_hoa_don, N
                     chinhSuaHangHoa(*cay_hang_hoa, ma_hang);
                     ghiHangHoaRaFile(*cay_hang_hoa, ten_file_hang_hoa);
                 }
-                break;
-            case 20:
+            }
+            break;
+
+            case 10: // Xóa hàng hóa
+            {
                 wprintf(L"Nhập mã hàng hóa cần xóa: ");
                 if (fgetws(ma_hang, MAX_ID, stdin)) {
                     ma_hang[wcscspn(ma_hang, L"\n")] = 0;
@@ -255,21 +252,80 @@ void xuLyMenu(Node** cay_khach_hang, Node** cay_phong_hat, Node** cay_hoa_don, N
                         wprintf(L"Không tìm thấy hàng hóa mã %ls để xóa!\n", ma_hang);
                     }
                 }
-                break;
-            case 21:
+            }
+            break;
+
+            case 11: // Sắp xếp hóa đơn theo tổng tiền (giảm dần)
+            {
+                // TODO: Implement sapXepHoaDonTheoTongTien
+                wprintf(L"Chức năng sắp xếp hóa đơn theo tổng tiền chưa được triển khai!\n");
+            }
+            break;
+
+            case 12: // Sắp xếp hóa đơn theo mã khách hàng (tăng dần)
+            {
+                // TODO: Implement sapXepHoaDonTheoMaKhachHang
+                wprintf(L"Chức năng sắp xếp hóa đơn theo mã khách hàng chưa được triển khai!\n");
+            }
+            break;
+
+            case 13: // Thống kê top 3 phòng thuê nhiều nhất
+            {
+                // TODO: Implement thongKeTop3Phong
+                wprintf(L"Chức năng thống kê top 3 phòng thuê nhiều nhất chưa được triển khai!\n");
+            }
+            break;
+
+            case 14: // Tìm kiếm hóa đơn theo số hóa đơn
+            {
+                wprintf(L"Nhập mã hóa đơn: ");
+                fgetws(ma_hoa_don, MAX_ID, stdin);
+                ma_hoa_don[wcscspn(ma_hoa_don, L"\n")] = 0;
+                timHoaDonTheoMa(*cay_hoa_don, ma_hoa_don);
+            }
+            break;
+
+            case 15: // Tìm kiếm và liệt kê hóa đơn theo mã khách hàng
+            {
+                wprintf(L"Nhập mã khách hàng: ");
+                fgetws(ma_khach_hang, MAX_ID, stdin);
+                ma_khach_hang[wcscspn(ma_khach_hang, L"\n")] = 0;
+                lietKeHoaDonTheoKhachHang(*cay_khach_hang, ma_khach_hang);
+            }
+            break;
+
+            case 16: // Thống kê doanh thu theo khoảng thời gian
+            {
+                wprintf(L"Nhập ngày bắt đầu (YYYY-MM-DD): ");
+                fgetws(bat_dau, 20, stdin);
+                bat_dau[wcscspn(bat_dau, L"\n")] = 0;
+                wprintf(L"Nhập ngày kết thúc (YYYY-MM-DD): ");
+                fgetws(ket_thuc, 20, stdin);
+                ket_thuc[wcscspn(ket_thuc, L"\n")] = 0;
+                // TODO: Implement thongKeDoanhThuTheoKhoangThoiGian
+                wprintf(L"Chức năng thống kê doanh thu chưa được triển khai!\n");
+            }
+            break;
+
+            case 17: // Thoát
+            {
                 wprintf(L"Thoát chương trình.\n");
-                break;
+            }
+            break;
+
             default:
+            {
                 wprintf(L"Lựa chọn không hợp lệ!\n");
+            }
+            break;
             }
         }
         else {
             wprintf(L"Lựa chọn không hợp lệ!\n");
             while (getwchar() != L'\n');
         }
-    } while (lua_chon != 21);
+    } while (lua_chon != 17);
 }
-
 int main() {
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
