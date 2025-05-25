@@ -1,2 +1,33 @@
-﻿  khachhang.cpp
+﻿  chitiethoadon.cpp
+E:\BT CTDLvaGT\Đề tài 18_Đồ án\Project_Git\KaraokeManagement\cpp\QL_Karaoke\QL_Karaoke\chitiethoadon.cpp(37,29): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+E:\BT CTDLvaGT\Đề tài 18_Đồ án\Project_Git\KaraokeManagement\cpp\QL_Karaoke\QL_Karaoke\chitiethoadon.cpp(38,32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+E:\BT CTDLvaGT\Đề tài 18_Đồ án\Project_Git\KaraokeManagement\cpp\QL_Karaoke\QL_Karaoke\chitiethoadon.cpp(77,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+E:\BT CTDLvaGT\Đề tài 18_Đồ án\Project_Git\KaraokeManagement\cpp\QL_Karaoke\QL_Karaoke\chitiethoadon.cpp(78,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  common.cpp
+E:\BT CTDLvaGT\Đề tài 18_Đồ án\Project_Git\KaraokeManagement\cpp\QL_Karaoke\QL_Karaoke\common.cpp(99,13): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\BT CTDLvaGT\Đề tài 18_Đồ án\Project_Git\KaraokeManagement\cpp\QL_Karaoke\QL_Karaoke\common.cpp(118,16): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  hanghoa.cpp
+  hoadon.cpp
+E:\BT CTDLvaGT\Đề tài 18_Đồ án\Project_Git\KaraokeManagement\cpp\QL_Karaoke\QL_Karaoke\phonghat.h(4,9): warning C4005: 'MAX_ID': macro redefinition
+  (compiling source file 'hoadon.cpp')
+      E:\BT CTDLvaGT\Đề tài 18_Đồ án\Project_Git\KaraokeManagement\cpp\QL_Karaoke\QL_Karaoke\common.h(14,9):
+      see previous definition of 'MAX_ID'
+  
+E:\BT CTDLvaGT\Đề tài 18_Đồ án\Project_Git\KaraokeManagement\cpp\QL_Karaoke\QL_Karaoke\hoadon.cpp(224,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  khachhang.cpp
+  main.cpp
+E:\BT CTDLvaGT\Đề tài 18_Đồ án\Project_Git\KaraokeManagement\cpp\QL_Karaoke\QL_Karaoke\phonghat.h(4,9): warning C4005: 'MAX_ID': macro redefinition
+  (compiling source file 'main.cpp')
+      E:\BT CTDLvaGT\Đề tài 18_Đồ án\Project_Git\KaraokeManagement\cpp\QL_Karaoke\QL_Karaoke\common.h(14,9):
+      see previous definition of 'MAX_ID'
+  
+E:\BT CTDLvaGT\Đề tài 18_Đồ án\Project_Git\KaraokeManagement\cpp\QL_Karaoke\QL_Karaoke\main.cpp(43,12): warning C4101: 'ngay_thue': unreferenced local variable
+E:\BT CTDLvaGT\Đề tài 18_Đồ án\Project_Git\KaraokeManagement\cpp\QL_Karaoke\QL_Karaoke\main.cpp(42,11): warning C4101: 'tong_tien': unreferenced local variable
+  phonghat.cpp
+E:\BT CTDLvaGT\Đề tài 18_Đồ án\Project_Git\KaraokeManagement\cpp\QL_Karaoke\QL_Karaoke\common.h(14,9): warning C4005: 'MAX_ID': macro redefinition
+  (compiling source file 'phonghat.cpp')
+      E:\BT CTDLvaGT\Đề tài 18_Đồ án\Project_Git\KaraokeManagement\cpp\QL_Karaoke\QL_Karaoke\phonghat.h(4,9):
+      see previous definition of 'MAX_ID'
+  
+  Generating Code...
   QL_Karaoke.vcxproj -> E:\BT CTDLvaGT\Đề tài 18_Đồ án\Project_Git\KaraokeManagement\cpp\QL_Karaoke\x64\Debug\QL_Karaoke.exe

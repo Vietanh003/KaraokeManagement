@@ -127,7 +127,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="chitiethoadon.cpp" />
+    <ClCompile Include="common.cpp" />
+    <ClCompile Include="hanghoa.cpp" />
+    <ClCompile Include="hoadon.cpp" />
     <ClCompile Include="khachhang.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="phonghat.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="chitiethoadon.txt" />
+    <Text Include="hanghoa.txt" />
+    <Text Include="haodon.txt" />
+    <Text Include="khachhang.txt" />
+    <Text Include="phonghat.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="chitiethoadon.h" />
+    <ClInclude Include="common.h" />
+    <ClInclude Include="hanghoa.h" />
+    <ClInclude Include="hoadon.h" />
+    <ClInclude Include="khachhang.h" />
+    <ClInclude Include="phonghat.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

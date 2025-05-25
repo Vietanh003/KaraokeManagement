@@ -13,10 +13,74 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{35e5fdab-f2e7-4bbc-8ab3-c48380c3d3d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{3021145a-163c-4112-bd66-fca63fe658d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data">
+      <UniqueIdentifier>{2daa9d03-6ffc-4377-98bb-5a5d12685972}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="khachhang.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="common.cpp">
+      <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="khachhang.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="phonghat.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="hoadon.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="hanghoa.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="chitiethoadon.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="khachhang.txt">
+      <Filter>data</Filter>
+    </Text>
+    <Text Include="phonghat.txt">
+      <Filter>data</Filter>
+    </Text>
+    <Text Include="haodon.txt">
+      <Filter>data</Filter>
+    </Text>
+    <Text Include="hanghoa.txt">
+      <Filter>data</Filter>
+    </Text>
+    <Text Include="chitiethoadon.txt">
+      <Filter>data</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="common.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="khachhang.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="phonghat.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="hoadon.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="hanghoa.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="chitiethoadon.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
