@@ -272,6 +272,7 @@ void xuLyMenu(Node** cay_khach_hang, Node** cay_phong_hat, Node** cay_hoa_don, N
             case 13: // Thống kê top 3 phòng thuê nhiều nhất
             {
                 // TODO: Implement thongKeTop3Phong
+                thongKeTop3Phong(gocPhongHat);
                 wprintf(L"Chức năng thống kê top 3 phòng thuê nhiều nhất chưa được triển khai!\n");
             }
             break;
