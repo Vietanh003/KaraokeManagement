@@ -298,14 +298,17 @@ void xuLyMenu(Node** cay_khach_hang, Node** cay_phong_hat, Node** cay_hoa_don, N
 
             case 16: // Thống kê doanh thu theo khoảng thời gian
             {
-                wprintf(L"Nhập ngày bắt đầu (YYYY-MM-DD): ");
-                fgetws(bat_dau, 20, stdin);
-                bat_dau[wcscspn(bat_dau, L"\n")] = 0;
-                wprintf(L"Nhập ngày kết thúc (YYYY-MM-DD): ");
-                fgetws(ket_thuc, 20, stdin);
-                ket_thuc[wcscspn(ket_thuc, L"\n")] = 0;
-                // TODO: Implement thongKeDoanhThuTheoKhoangThoiGian
-                wprintf(L"Chức năng thống kê doanh thu chưa được triển khai!\n");
+                struct tm tm_bat_dau = { 0 }, tm_ket_thuc = { 0 };
+                swscanf_s(bat_dau, L"%d-%d-%d", &tm_bat_dau.tm_year, &tm_bat_dau.tm_mon, &tm_bat_dau.tm_mday);
+                swscanf_s(ket_thuc, L"%d-%d-%d", &tm_ket_thuc.tm_year, &tm_ket_thuc.tm_mon, &tm_ket_thuc.tm_mday);
+                tm_bat_dau.tm_year -= 1900;
+                tm_ket_thuc.tm_year -= 1900;
+                tm_bat_dau.tm_mon -= 1;
+                tm_ket_thuc.tm_mon -= 1;
+
+                double doanh_thu = thongKeDoanhThu(*cay_hoa_don, tm_bat_dau, tm_ket_thuc);
+
+                wprintf(L"Tổng doanh thu: %.2lf\n", doanh_thu);
             }
             break;
 
