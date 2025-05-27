@@ -102,11 +102,52 @@ void hienThiTatCaPhongHat(Node* goc) {
 }
 
 void thongKeTop3Phong(Node* goc) {
-    wprintf(L"Thống kê phòng hát:\n");
+    wprintf(L"Thống kê Top 3 phòng hát có số lần thuê nhiều nhất:\n");
+
     if (!goc) {
         wprintf(L"Không có phòng hát.\n");
         return;
     }
 
-    inPhongHat(goc);
+   
+    Node* top1 = NULL;
+    Node* top2 = NULL;
+    Node* top3 = NULL;
+
+  
+    std::stack<Node*> stack;
+    stack.push(goc);
+
+    while (!stack.empty()) {
+        Node* current = stack.top();
+        stack.pop();
+
+    
+        if (!top1 || current->data.so_lan_thue > top1->data.so_lan_thue) {
+            top3 = top2;
+            top2 = top1;
+            top1 = current;
+        }
+        else if (!top2 || current->data.so_lan_thue > top2->data.so_lan_thue) {
+            top3 = top2;
+            top2 = current;
+        }
+        else if (!top3 || current->data.so_lan_thue > top3->data.so_lan_thue) {
+            top3 = current;
+        }
+
+        if (current->phai) stack.push(current->phai);
+        if (current->trai) stack.push(current->trai);
+    }
+
+  
+    if (top1) {
+        wprintf(L"1. Mã phòng: %ls, Loại: %ls, Số lần thuê: %d\n", top1->data.ma_phong, top1->data.loai_phong, top1->data.so_lan_thue);
+    }
+    if (top2) {
+        wprintf(L"2. Mã phòng: %ls, Loại: %ls, Số lần thuê: %d\n", top2->data.ma_phong, top2->data.loai_phong, top2->data.so_lan_thue);
+    }
+    if (top3) {
+        wprintf(L"3. Mã phòng: %ls, Loại: %ls, Số lần thuê: %d\n", top3->data.ma_phong, top3->data.loai_phong, top3->data.so_lan_thue);
+    }
 }
