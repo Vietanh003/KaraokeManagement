@@ -281,12 +281,83 @@ void timHoaDonTheoMa(Node* goc, const wchar_t* ma_hoa_don) {
 void sapXepHoaDonTheoTongTien(Node* goc, Node* cay_chi_tiet_hoa_don) {
     wprintf(L"Danh sách hóa đơn:\n");
     inHoaDon(goc, cay_chi_tiet_hoa_don);
+    // Tạo cây AVL mới để sắp xếp theo tổng tiền
+    Node* cay_theo_tong_tien = NULL;
+
+    // Hàm thêm vào cây mới
+    void themVaoCayTheoTongTien(Node * node) {
+        if (!node) return;
+        themVaoCayTheoTongTien(node->left);
+        HoaDon* hd = (HoaDon*)malloc(sizeof(HoaDon));
+        if (hd) {
+            memcpy(hd, node->du_lieu, sizeof(HoaDon));
+            cay_theo_tong_tien = chenNode(cay_theo_tong_tien, hd, soSanhHoaDonTheoTongTien);
+        }
+        themVaoCayTheoTongTien(node->right);
+    }
+
+    themVaoCayTheoTongTien(goc);
+
+    wprintf(L"Danh sách hóa đơn sắp xếp theo tổng tiền (giảm dần):\n");
+
+    // Hàm in InOrder
+    void inCayTheoTongTien(Node* goc) {
+        if (!goc) return;
+        inCayTheoTongTien(goc->right); 
+        inHoaDon(goc, cay_chi_tiet_hoa_don);
+        inCayTheoTongTien(goc->left);
+    }
+
+    inCayTheoTongTien(cay_theo_tong_tien);
+
+    // Giải phóng cây tạm
+    freeTree(cay_theo_tong_tien);
 }
 
 void sapXepHoaDonTheoMaKhachHang(Node* goc, Node* cay_chi_tiet_hoa_don) {
-    wprintf(L"Danh sách hóa đơn:\n");
-    inHoaDon(goc, cay_chi_tiet_hoa_don);
+    if (!goc) {
+        wprintf(L"Không có hóa đơn.\n");
+        return;
+    }
+
+    // Tạo cây mới AVL sắp xếp theo ma_khach_hang
+    Node* cay_theo_ma_kh = NULL;
+
+    // Hàm thêm vào cây mới
+    void themVaoCayTheoMaKH(Node * goc) {
+        if (!goc) return;
+        themVaoCayTheoMaKH(goc->left);
+
+        HoaDon* hd = (HoaDon*)malloc(sizeof(HoaDon));
+        memcpy(hd, goc->du_lieu, sizeof(HoaDon));
+        cay_theo_ma_kh = chenNode(cay_theo_ma_kh, hd, soSanhHoaDonTheoMaKhachHang);
+
+        themVaoCayTheoMaKH(goc->right);
+    }
+
+    themVaoCayTheoMaKH(goc);
+
+    wprintf(L"Danh sách hóa đơn sắp xếp theo mã khách hàng (tăng dần):\n");
+
+    // Hàm in InOrder
+    void inCayTheoMaKH(Node * goc) {
+        if (!goc) return;
+        inCayTheoMaKH(goc->left);
+        inHoaDon(goc, cay_chi_tiet_hoa_don);
+        inCayTheoMaKH(goc->right);
+    }
+
+    inCayTheoMaKH(cay_theo_ma_kh);
+
+    // Giải phóng cây tạm
+    freeTree(cay_theo_ma_kh);
 }
+int soSanhHoaDonTheoMaKhachHang(const void* a, const void* b) {
+    const HoaDon* hd1 = (const HoaDon*)a;
+    const HoaDon* hd2 = (const HoaDon*)b;
+    return wcscmp(hd1->ma_khach_hang, hd2->ma_khach_hang);
+}
+
 
 void hienThiTatCaHoaDon(Node* goc, Node* cay_chi_tiet_hoa_don) {
     if (!goc) {
