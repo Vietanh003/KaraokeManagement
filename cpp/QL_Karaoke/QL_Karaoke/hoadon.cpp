@@ -285,15 +285,15 @@ void sapXepHoaDonTheoTongTien(Node* goc, Node* cay_chi_tiet_hoa_don) {
     Node* cay_theo_tong_tien = NULL;
 
     // Hàm thêm vào cây mới
-    void themVaoCayTheoTongTien(Node * node) {
-        if (!node) return;
-        themVaoCayTheoTongTien(node->left);
+    void themVaoCayTheoTongTien(Node * goc) {
+        if (!goc) return;
+        themVaoCayTheoTongTien(goc->left);
         HoaDon* hd = (HoaDon*)malloc(sizeof(HoaDon));
         if (hd) {
-            memcpy(hd, node->du_lieu, sizeof(HoaDon));
+            memcpy(hd, goc->du_lieu, sizeof(HoaDon));
             cay_theo_tong_tien = chenNode(cay_theo_tong_tien, hd, soSanhHoaDonTheoTongTien);
         }
-        themVaoCayTheoTongTien(node->right);
+        themVaoCayTheoTongTien(goc->right);
     }
 
     themVaoCayTheoTongTien(goc);
