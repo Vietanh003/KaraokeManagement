@@ -1,8 +1,0 @@
-﻿  hoadon.cpp
-E:\BT CTDLvaGT\Đề tài 18_Đồ án\Project_Git\KaraokeManagement\cpp\QL_Karaoke\QL_Karaoke\phonghat.h(4,9): warning C4005: 'MAX_ID': macro redefinition
-  (compiling source file 'hoadon.cpp')
-      E:\BT CTDLvaGT\Đề tài 18_Đồ án\Project_Git\KaraokeManagement\cpp\QL_Karaoke\QL_Karaoke\common.h(14,9):
-      see previous definition of 'MAX_ID'
-  
-E:\BT CTDLvaGT\Đề tài 18_Đồ án\Project_Git\KaraokeManagement\cpp\QL_Karaoke\QL_Karaoke\hoadon.cpp(223,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  QL_Karaoke.vcxproj -> E:\BT CTDLvaGT\Đề tài 18_Đồ án\Project_Git\KaraokeManagement\cpp\QL_Karaoke\x64\Debug\QL_Karaoke.exe
