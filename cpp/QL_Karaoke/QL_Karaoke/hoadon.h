@@ -7,7 +7,7 @@ typedef struct HoaDon {
     wchar_t ma_hoa_don[MAX_ID];
     wchar_t ma_khach_hang[MAX_ID];
     wchar_t ma_phong[MAX_ID];
-    float tong_tien;
+    double tong_tien;
     time_t ngay_thue;
     time_t gio_thue;  
     time_t gio_ra;    

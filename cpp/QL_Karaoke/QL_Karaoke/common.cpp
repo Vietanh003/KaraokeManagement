@@ -92,16 +92,19 @@ void freeTree(Node* node) {
 
 // định dạng tiền tệ Việt Nam
 void dinhDangVND(double so_tien, wchar_t* ket_qua, size_t kich_thuoc) {
-    wchar_t tam[64];
-    swprintf(tam, sizeof(tam) / sizeof(wchar_t), L"%.0lf", so_tien);  // Lấy phần nguyên
+    if (kich_thuoc == 0) {
+        return;
+    }
 
-    int len = wcslen(tam);
-    int dem = 0;
-    int j = 0;
+    wchar_t tam[32];
+    swprintf_s(tam, _countof(tam), L"%.0lf", so_tien);
+
+    size_t len = wcslen(tam);
+    size_t num_separators = (len > 3) ? (len - 1) / 3 : 0;
+
     wchar_t ketqua_dao[64] = { 0 };
-
-    // Đảo chuỗi và chèn dấu chấm sau mỗi 3 chữ số
-    for (int i = len - 1; i >= 0; i--) {
+    int j = 0, dem = 0;
+    for (int i = (int)len - 1; i >= 0; i--) {
         ketqua_dao[j++] = tam[i];
         dem++;
         if (dem == 3 && i != 0) {
@@ -109,18 +112,23 @@ void dinhDangVND(double so_tien, wchar_t* ket_qua, size_t kich_thuoc) {
             dem = 0;
         }
     }
-
     ketqua_dao[j] = L'\0';
 
-    // Đảo lại kết quả cuối cùng và thêm " VNĐ"
     wchar_t ketqua_chinh[64] = { 0 };
-    int len_kq = wcslen(ketqua_dao);
+    int len_kq = (int)wcslen(ketqua_dao);
     for (int i = 0; i < len_kq; i++) {
         ketqua_chinh[i] = ketqua_dao[len_kq - i - 1];
     }
+    ketqua_chinh[len_kq] = L'\0';
 
-    swprintf(ket_qua, kich_thuoc, L"%ls ₫", ketqua_chinh);
+    if (wcslen(ketqua_chinh) + 3 >= kich_thuoc) {
+        wcsncpy_s(ket_qua, kich_thuoc, L"Overflow", _TRUNCATE);
+        return;
+    }
+
+    swprintf_s(ket_qua, kich_thuoc, L"%ls ₫", ketqua_chinh);
 }
+
 void taoMaTuDong(const wchar_t* tien_to, const wchar_t* ma_cuoi, wchar_t* ma_moi, size_t kich_thuoc) {
     int so_moi = 1;
     size_t do_dai_tien_to = wcslen(tien_to);

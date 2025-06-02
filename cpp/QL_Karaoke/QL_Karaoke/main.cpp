@@ -3,6 +3,7 @@
 #include "phonghat.h"
 #include "hoadon.h"
 #include "hanghoa.h"
+#include "thongkedt.h"
 #include "chitiethoadon.h"
 #include <windows.h>
 #include <stdio.h>
@@ -40,19 +41,30 @@ void hienThiMenu() {
     wprintf(L"║     nhất                           ║\n");
     wprintf(L"║ 14. Tìm kiếm hóa đơn theo số hóa   ║\n");
     wprintf(L"║     đơn                            ║\n");
-    wprintf(L"║ 15. Tìm kiếm và liệt kê hóa đơn theo║\n");
-    wprintf(L"║     mã khách hàng                  ║\n");
+    wprintf(L"║ 15. Tìm kiếm và liệt kê hóa đơn    ║\n");
+    wprintf(L"║    theo mã khách hàng              ║\n");
     wprintf(L"║ 16. Thống kê doanh thu theo khoảng ║\n");
+    wprintf(L"║ 17. Thống kê doanh thu ngày        ║\n");
+    wprintf(L"║ 18. Thống kê doanh thu tháng       ║\n");
+    wprintf(L"║ 19. Thống kê doanh thu quý         ║\n");
+    wprintf(L"║ 20. Thống kê doanh thu năm         ║\n");
     wprintf(L"║     thời gian                      ║\n");
-    wprintf(L"║ 17. Thoát                          ║\n");
+    wprintf(L"║ 21. Thoát                          ║\n");
     wprintf(L"╚════════════════════════════════════╝\n");
 
     SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_INTENSITY);
-    wprintf(L"\nNhập lựa chọn (1-17): ");
+    wprintf(L"\nNhập lựa chọn (1-21): ");
 
     SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 }
-
+time_t normalizeToDayStart(time_t t) {
+    struct tm tm;
+    localtime_s(&tm, &t); 
+    tm.tm_hour = 0;
+    tm.tm_min = 0;
+    tm.tm_sec = 0;
+    return mktime(&tm); 
+}
 void xuLyMenu(Node** cay_khach_hang, Node** cay_phong_hat, Node** cay_hoa_don, Node** cay_hang_hoa, Node** cay_chi_tiet_hoa_don) {
     int lua_chon;
     wchar_t ma_khach_hang[MAX_ID], ten[MAX_NAME], so_dien_thoai[15];
@@ -295,24 +307,123 @@ void xuLyMenu(Node** cay_khach_hang, Node** cay_phong_hat, Node** cay_hoa_don, N
                 lietKeHoaDonTheoKhachHang(*cay_khach_hang, ma_khach_hang);
             }
             break;
-
             case 16: // Thống kê doanh thu theo khoảng thời gian
             {
+                wchar_t bat_dau[20], ket_thuc[20];
+                wprintf(L"Nhập ngày bắt đầu (YYYY-MM-DD): ");
+                fgetws(bat_dau, 20, stdin);
+                bat_dau[wcslen(bat_dau) - 1] = L'\0';
+
+                wprintf(L"Nhập ngày kết thúc (YYYY-MM-DD): ");
+                fgetws(ket_thuc, 20, stdin);
+                ket_thuc[wcslen(ket_thuc) - 1] = L'\0';
+
                 struct tm tm_bat_dau = { 0 }, tm_ket_thuc = { 0 };
                 swscanf_s(bat_dau, L"%d-%d-%d", &tm_bat_dau.tm_year, &tm_bat_dau.tm_mon, &tm_bat_dau.tm_mday);
                 swscanf_s(ket_thuc, L"%d-%d-%d", &tm_ket_thuc.tm_year, &tm_ket_thuc.tm_mon, &tm_ket_thuc.tm_mday);
                 tm_bat_dau.tm_year -= 1900;
-                tm_ket_thuc.tm_year -= 1900;
                 tm_bat_dau.tm_mon -= 1;
+                tm_ket_thuc.tm_year -= 1900;
                 tm_ket_thuc.tm_mon -= 1;
 
                 double doanh_thu = thongKeDoanhThu(*cay_hoa_don, tm_bat_dau, tm_ket_thuc);
 
-                wprintf(L"Tổng doanh thu: %.2lf\n", doanh_thu);
+                // Định dạng tiền tệ
+                wchar_t ket_qua[64];
+                dinhDangVND(doanh_thu, ket_qua, sizeof(ket_qua) / sizeof(wchar_t));
+
+                wprintf(L"Tổng doanh thu: %ls\n", ket_qua);
+                break;
+            }
+
+            case 17:
+            {
+                wchar_t ngay[20];
+                wprintf(L"Nhập ngày (YYYY-MM-DD): ");
+                fgetws(ngay, _countof(ngay), stdin); 
+                trimString(ngay);
+
+                int year, month, day;
+                if (swscanf_s(ngay, L"%d-%d-%d", &year, &month, &day) != 3) {
+                    wprintf(L"Định dạng ngày không hợp lệ! Vui lòng nhập theo YYYY-MM-DD.\n");
+                    break;
+                }
+
+                if (month < 1 || month > 12 || day < 1 || day > 31 || year < 1900) {
+                    wprintf(L"Ngày không hợp lệ!\n");
+                    break;
+                }
+
+                double doanh_thu = thongKeDoanhThuTheoNgay(*cay_hoa_don, year, month, day);
+
+                wchar_t ket_qua[64]; 
+                dinhDangVND(doanh_thu, ket_qua, _countof(ket_qua)); 
+
+                wprintf(L"Doanh thu ngày %ls: %ls\n", ngay, ket_qua);
             }
             break;
 
-            case 17: // Thoát
+            case 18: // Thống kê doanh thu theo tháng
+            {
+                wchar_t thang[20];
+                wprintf(L"Nhập tháng (YYYY-MM): ");
+                fgetws(thang, 20, stdin);
+                thang[wcslen(thang) - 1] = L'\0';
+
+                int year, month;
+                if (swscanf_s(thang, L"%d-%d", &year, &month) != 2 || month < 1 || month > 12) {
+                    wprintf(L"Định dạng tháng không hợp lệ! Vui lòng nhập theo YYYY-MM.\n");
+                    break;
+                }
+
+                double doanh_thu = thongKeDoanhThuTheoThang(*cay_hoa_don, year, month);
+                wchar_t ket_qua[64];
+                dinhDangVND(doanh_thu, ket_qua, sizeof(ket_qua) / sizeof(wchar_t));
+                wprintf(L"Doanh thu tháng %ls: %ls\n", thang, ket_qua);
+            }
+            break;
+
+            case 19: // Thống kê doanh thu theo quý
+            {
+                wchar_t quy[20];
+                wprintf(L"Nhập quý (YYYY-Q): ");
+                fgetws(quy, 20, stdin);
+                quy[wcslen(quy) - 1] = L'\0';
+
+                int year, quarter;
+                if (swscanf_s(quy, L"%d-%d", &year, &quarter) != 2 || quarter < 1 || quarter > 4) {
+                    wprintf(L"Định dạng quý không hợp lệ! Vui lòng nhập theo YYYY-Q (Q từ 1 đến 4).\n");
+                    break;
+                }
+
+                double doanh_thu = thongKeDoanhThuTheoQuy(*cay_hoa_don, year, quarter);
+                wchar_t ket_qua[64];
+                dinhDangVND(doanh_thu, ket_qua, sizeof(ket_qua) / sizeof(wchar_t));
+                wprintf(L"Doanh thu quý %ls: %ls\n", quy, ket_qua);
+            }
+            break;
+
+            case 20: // Thống kê doanh thu theo năm
+            {
+                wchar_t nam[20];
+                wprintf(L"Nhập năm (YYYY): ");
+                fgetws(nam, 20, stdin);
+                nam[wcslen(nam) - 1] = L'\0';
+
+                int year;
+                if (swscanf_s(nam, L"%d", &year) != 1) {
+                    wprintf(L"Định dạng năm không hợp lệ! Vui lòng nhập theo YYYY.\n");
+                    break;
+                }
+
+                double doanh_thu = thongKeDoanhThuTheoNam(*cay_hoa_don, year);
+                wchar_t ket_qua[64];
+                dinhDangVND(doanh_thu, ket_qua, sizeof(ket_qua) / sizeof(wchar_t));
+                wprintf(L"Doanh thu năm %ls: %ls\n", nam, ket_qua);
+            }
+            break;
+
+            case 21: // Thoát
             {
                 wprintf(L"Thoát chương trình.\n");
             }

@@ -134,6 +134,7 @@
     <ClCompile Include="khachhang.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="phonghat.cpp" />
+    <ClCompile Include="thongkedt.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="chitiethoadon.txt" />
@@ -149,6 +150,7 @@
     <ClInclude Include="hoadon.h" />
     <ClInclude Include="khachhang.h" />
     <ClInclude Include="phonghat.h" />
+    <ClInclude Include="thongkedt.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
