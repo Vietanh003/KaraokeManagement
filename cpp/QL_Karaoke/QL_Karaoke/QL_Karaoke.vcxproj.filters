@@ -45,6 +45,9 @@
     <ClCompile Include="chitiethoadon.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="thongkedt.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="khachhang.txt">
@@ -80,6 +83,9 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="chitiethoadon.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="thongkedt.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
