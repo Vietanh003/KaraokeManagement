@@ -277,7 +277,7 @@ void xuLyMenu(Node** cay_khach_hang, Node** cay_phong_hat, Node** cay_hoa_don, N
             case 12: // Sắp xếp hóa đơn theo mã khách hàng (tăng dần)
             {
                 // TODO: Implement sapXepHoaDonTheoMaKhachHang
-                sapXepHoaDonTheoMaKhachHang(goc, cay_chi_tiet_hoa_don);
+            
                 wprintf(L"Chức năng sắp xếp hóa đơn theo mã khách hàng chưa được triển khai!\n");
             }
             break;
@@ -285,7 +285,7 @@ void xuLyMenu(Node** cay_khach_hang, Node** cay_phong_hat, Node** cay_hoa_don, N
             case 13: // Thống kê top 3 phòng thuê nhiều nhất
             {
                 // TODO: Implement thongKeTop3Phong
-                thongKeTop3Phong(cay_phong_hat);
+               
                 wprintf(L"Chức năng thống kê top 3 phòng thuê nhiều nhất chưa được triển khai!\n");
             }
             break;
