@@ -1,0 +1,35 @@
+# ========================
+# Ignore for C++ project
+# ========================
+
+# Visual Studio & build folders
+.vs/
+*.sdf
+*.suo
+*.user
+
+# Build directories (recursive ignore)
+Debug/
+x64/
+
+cpp/QL_Karaoke/**/Debug/
+cpp/QL_Karaoke/**/x64/
+
+# Binary files
+*.exe
+*.obj
+*.pdb
+*.ilk
+*.ipch
+*.log
+
+# Others
+*.bak
+*.tmp
+*~
+
+# Ignore auto-generated files
+*.tlog
+*.lastbuildstate
+*.opensdf
+*.VC.db
