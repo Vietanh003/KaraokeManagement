@@ -1,5 +1,1 @@
-﻿ka01 VIP 0
-ka02 Thường 2
-ka03 VIP 0
-ka04 VIP 1
-ka06 Thường 1
+﻿ka03 Thường 1

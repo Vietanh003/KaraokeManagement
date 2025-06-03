@@ -429,5 +429,30 @@ void inThongTinHoaDon(Node* node, Node* cay_chi_tiet_hoa_don) {
     if (cay_chi_tiet_hoa_don) {
         wprintf(L"  Chi tiết hóa đơn:\n");
         hienThiChiTietHoaDonTheoMaHoaDon(cay_chi_tiet_hoa_don, hd->ma_hoa_don);
+        float tong_chi_tiet = tinhTongTienChiTiet(cay_chi_tiet_hoa_don, hd->ma_hoa_don);
+        float tien_gio = hd->tong_tien - tong_chi_tiet;
+
+        wchar_t tong_ct_vnd[64], tien_gio_vnd[64];
+        dinhDangVND(tong_chi_tiet, tong_ct_vnd, sizeof(tong_ct_vnd) / sizeof(wchar_t));
+        dinhDangVND(tien_gio, tien_gio_vnd, sizeof(tien_gio_vnd) / sizeof(wchar_t));
+
+        wprintf(L"  ➤ Tổng tiền dịch vụ: %ls\n", tong_ct_vnd);
+        wprintf(L"  ➤ Tiền giờ (phòng):  %ls\n", tien_gio_vnd);
+
     }
+}
+float tinhTongTienChiTiet(Node* goc, const wchar_t* ma_hoa_don) {
+    if (!goc) return 0.0f;
+
+    ChiTietHoaDon* cthd = (ChiTietHoaDon*)goc->du_lieu;
+    float tong = 0.0f;
+
+    if (wcscmp(cthd->ma_hoa_don, ma_hoa_don) == 0) {
+        tong += cthd->thanh_tien;
+    }
+
+    tong += tinhTongTienChiTiet(goc->left, ma_hoa_don);
+    tong += tinhTongTienChiTiet(goc->right, ma_hoa_don);
+
+    return tong;
 }
