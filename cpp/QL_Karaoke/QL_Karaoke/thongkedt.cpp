@@ -17,9 +17,6 @@ double thongKeDoanhThu(Node* goc, struct tm bat_dau_tm, struct tm ket_thuc_tm) {
     if (goc->du_lieu != NULL) {
         HoaDon* hd = (HoaDon*)goc->du_lieu;
 
-        // In log kiểm tra
-        // printf("HD: %s, Thời gian: %lld, Tổng tiền: %.2f\n", hd->ma_hoa_don, (long long)hd->ngay_thue, hd->tong_tien);
-
         if (hd->ngay_thue >= bat_dau && hd->ngay_thue <= ket_thuc) {
             tong += hd->tong_tien;
         }
@@ -31,7 +28,6 @@ double thongKeDoanhThu(Node* goc, struct tm bat_dau_tm, struct tm ket_thuc_tm) {
     return tong;
 }
 
-// Các hàm sau đây chỉ xử lý khoảng thời gian đúng chuẩn
 
 double thongKeDoanhThuTheoNgay(Node* goc, int year, int month, int day) {
     struct tm bat_dau_tm = { 0 };
@@ -63,8 +59,8 @@ double thongKeDoanhThuTheoThang(Node* goc, int year, int month) {
     ket_thuc_tm.tm_mday = 1;
 
     time_t t = mktime(&ket_thuc_tm);
-    t -= 1; // Lùi lại 1 giây để được thời điểm cuối tháng
-    ket_thuc_tm = *localtime(&t);
+    t -= 1; 
+    localtime_s(&ket_thuc_tm, &t);
 
     return thongKeDoanhThu(goc, bat_dau_tm, ket_thuc_tm);
 }
@@ -87,7 +83,7 @@ double thongKeDoanhThuTheoQuy(Node* goc, int year, int quarter) {
 
     time_t t = mktime(&ket_thuc_tm);
     t -= 1;
-    ket_thuc_tm = *localtime(&t);
+    localtime_s(&ket_thuc_tm, &t);
 
     return thongKeDoanhThu(goc, bat_dau_tm, ket_thuc_tm);
 }

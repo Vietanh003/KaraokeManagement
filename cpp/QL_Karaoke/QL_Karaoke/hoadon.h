@@ -1,4 +1,4 @@
-#ifndef HOADON_H
+﻿#ifndef HOADON_H
 #define HOADON_H
 
 #include "common.h"
@@ -22,6 +22,4 @@ void hienThiTatCaHoaDon(Node* goc, Node* cay_chi_tiet_hoa_don);
 void inThongTinHoaDon(Node* node, Node* cay_chi_tiet_hoa_don);
 int soSanhHoaDonTheoMaKhachHang(const void* a, const void* b);
 void sapXepHoaDonTheoMaKhachHang(Node* goc, Node* cay_chi_tiet_hoa_don);
-void lietKeHoaDonTheoKhachHang(Node* goc_hoa_don, const wchar_t* ma_khach_hang, Node* cay_chi_tiet_hoa_don);
-
 #endif

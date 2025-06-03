@@ -16,5 +16,5 @@ void ghiPhongHatRaFile(Node* goc, const wchar_t* ten_file);
 void themPhongHatMoi(Node** goc, const wchar_t* ma_phong, const wchar_t* loai_phong, const wchar_t* ten_file);
 void hienThiTatCaPhongHat(Node* goc);
 void thongKeTop3Phong(Node* goc);
-
+void tangSoLanThuePhongHat(Node* goc, const wchar_t* ma_phong, const wchar_t* ten_file);
 #endif

@@ -186,26 +186,58 @@ const wchar_t* timMaKhachHangTheoSoDienThoai(const wchar_t* so_dien_thoai, const
     fclose(file);
     return NULL;
 }
-void lietKeHoaDonTheoKhachHang(Node* goc, const wchar_t* ma_khach_hang) {
-    KhachHang kh_tim = { 0 };
-    wcscpy_s(kh_tim.ma_khach_hang, MAX_ID, ma_khach_hang);
-    Node* node_kh = timNode(goc, &kh_tim, soSanhKhachHang);
 
-    if (!node_kh) {
-        wprintf(L"Không tìm thấy khách hàng %ls!\n", ma_khach_hang);
-        return;
+void lietKeHoaDonTheoKhachHang_DeQuy(Node* node, const wchar_t* ma_khach_hang, Node* cay_chi_tiet_hoa_don, int* found) {
+    if (!node) return;
+
+    lietKeHoaDonTheoKhachHang_DeQuy(node->left, ma_khach_hang, cay_chi_tiet_hoa_don, found);
+
+    HoaDon* hd = (HoaDon*)node->du_lieu;
+    if (wcscmp(hd->ma_khach_hang, ma_khach_hang) == 0) {
+        *found = 1;
+        inThongTinHoaDon(node, cay_chi_tiet_hoa_don);
     }
 
-    KhachHang* kh = (KhachHang*)node_kh->du_lieu;
-    wprintf(L"Hóa đơn của khách hàng %ls (%ls):\n", kh->ten, kh->ma_khach_hang);
-
-    if (!kh->ds_hoa_don) {
-        wprintf(L"Không có hóa đơn.\n");
-        return;
-    }
-
-    inThongTinHoaDon(goc, NULL);
+    lietKeHoaDonTheoKhachHang_DeQuy(node->right, ma_khach_hang, cay_chi_tiet_hoa_don, found);
 }
+
+void lietKeHoaDonTheoKhachHang(Node* goc_hoa_don, const wchar_t* ma_khach_hang, Node* cay_chi_tiet_hoa_don, Node* cay_khach_hang) {
+    Node* node_khach = timKhachHangTheoMa(cay_khach_hang, ma_khach_hang);
+    if (!node_khach) {
+        wprintf(L"Không tìm thấy khách hàng có mã: %ls\n", ma_khach_hang);
+        return;
+    }
+
+    hienThi1KhachHang(node_khach);
+
+    int found = 0;
+    wprintf(L"\n===== DANH SÁCH HÓA ĐƠN CỦA KHÁCH HÀNG %ls =====\n", ma_khach_hang);
+    lietKeHoaDonTheoKhachHang_DeQuy(goc_hoa_don, ma_khach_hang, cay_chi_tiet_hoa_don, &found);
+    if (!found) {
+        wprintf(L"Không có hóa đơn nào cho khách hàng này.\n");
+    }
+    wprintf(L"================================================\n");
+}
+
+
+void hienThi1KhachHang(Node* node) {
+    if (!node) return;
+    KhachHang* kh = (KhachHang*)node->du_lieu;
+    wprintf(L"\n===== THÔNG TIN KHÁCH HÀNG =====\n");
+    wprintf(L"Mã KH: %ls\nTên: %ls\nSĐT: %ls\n", kh->ma_khach_hang, kh->ten, kh->so_dien_thoai);
+    wprintf(L"================================\n");
+}
+
+Node* timKhachHangTheoMa(Node* goc, const wchar_t* ma_khach_hang) {
+    if (!goc) return NULL;
+    KhachHang* kh = (KhachHang*)goc->du_lieu;
+
+    int cmp = wcscmp(ma_khach_hang, kh->ma_khach_hang);
+    if (cmp == 0) return goc;
+    else if (cmp < 0) return timKhachHangTheoMa(goc->left, ma_khach_hang);
+    else return timKhachHangTheoMa(goc->right, ma_khach_hang);
+}
+
 void hienThiKhachHang(Node* node, int* count) {
     if (!node) return;
 

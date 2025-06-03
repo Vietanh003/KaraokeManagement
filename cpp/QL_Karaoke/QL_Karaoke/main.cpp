@@ -26,7 +26,7 @@ void hienThiMenu() {
     wprintf(L"║  1. Thêm phòng hát mới             ║\n");
     wprintf(L"║  2. Thêm một khách hàng mới        ║\n");
     wprintf(L"║  3. Thêm hàng hóa mới              ║\n");
-    wprintf(L"║  4. Thêm hóa đơn và chi tiết hóa đơn║\n");
+    wprintf(L"║  4. Thêm hóa đơn & chi tiết hóa đơn║\n");
     wprintf(L"║  5. Hiển thị tất cả khách hàng     ║\n");
     wprintf(L"║  6. Hiển thị tất cả phòng hát      ║\n");
     wprintf(L"║  7. Hiển thị tất cả hàng hóa       ║\n");
@@ -47,8 +47,8 @@ void hienThiMenu() {
     wprintf(L"║ 17. Thống kê doanh thu ngày        ║\n");
     wprintf(L"║ 18. Thống kê doanh thu tháng       ║\n");
     wprintf(L"║ 19. Thống kê doanh thu quý         ║\n");
-    wprintf(L"║ 20. Thống kê doanh thu năm         ║\n");
-    wprintf(L"║     thời gian                      ║\n");
+    wprintf(L"║ 20. Thống kê doanh thu theo        ║\n");
+    wprintf(L"║     năm                            ║\n");
     wprintf(L"║ 21. Thoát                          ║\n");
     wprintf(L"╚════════════════════════════════════╝\n");
 
@@ -187,13 +187,19 @@ void xuLyMenu(Node** cay_khach_hang, Node** cay_phong_hat, Node** cay_hoa_don, N
                         wprintf(L"Giảm giá không được để trống! Nhập lại.\n");
                         continue;
                     }
-                    if (swscanf_s(discount_input, L"%lf", &giam_gia) == 1 && giam_gia >= 0 && giam_gia <= 100) {
-                        valid_discount = 1;
+                    if (swscanf_s(discount_input, L"%lf", &giam_gia) == 1 && giam_gia >= 0) {
+                        if (giam_gia <= gia_tien * 0.3) {
+                            valid_discount = 1;
+                        }
+                        else {
+                            wprintf(L"Giảm giá không được vượt quá 30%% giá tiền (%.2lf)!\n", gia_tien * 0.3);
+                        }
                     }
                     else {
-                        wprintf(L"Giảm giá không hợp lệ (0-100%%)! Nhập lại.\n");
+                        wprintf(L"Giảm giá không hợp lệ! Nhập lại.\n");
                     }
                 } while (!valid_discount);
+
 
                 themHangHoaMoi(cay_hang_hoa, ten_hang, gia_tien, giam_gia, ten_file_hang_hoa);
             }
@@ -281,9 +287,7 @@ void xuLyMenu(Node** cay_khach_hang, Node** cay_phong_hat, Node** cay_hoa_don, N
 
             case 13: // Thống kê top 3 phòng thuê nhiều nhất
             {
-                // TODO: Implement thongKeTop3Phong
-               
-                wprintf(L"Chức năng thống kê top 3 phòng thuê nhiều nhất chưa được triển khai!\n");
+                thongKeTop3Phong(*cay_phong_hat);
             }
             break;
 
@@ -292,16 +296,21 @@ void xuLyMenu(Node** cay_khach_hang, Node** cay_phong_hat, Node** cay_hoa_don, N
                 wprintf(L"Nhập mã hóa đơn: ");
                 fgetws(ma_hoa_don, MAX_ID, stdin);
                 ma_hoa_don[wcscspn(ma_hoa_don, L"\n")] = 0;
-               /* timHoaDonTheoMa(*cay_hoa_don, ma_hoa_don);*/
+
+                timHoaDonTheoMa(*cay_hoa_don, *cay_chi_tiet_hoa_don, ma_hoa_don);
+
             }
             break;
 
             case 15: // Tìm kiếm và liệt kê hóa đơn theo mã khách hàng
             {
+                wchar_t ma_khach_hang[MAX_ID];
                 wprintf(L"Nhập mã khách hàng: ");
                 fgetws(ma_khach_hang, MAX_ID, stdin);
                 ma_khach_hang[wcscspn(ma_khach_hang, L"\n")] = 0;
-                lietKeHoaDonTheoKhachHang(*cay_khach_hang, ma_khach_hang);
+
+                lietKeHoaDonTheoKhachHang(*cay_hoa_don, ma_khach_hang, *cay_chi_tiet_hoa_don,*cay_khach_hang);
+                break;
             }
             break;
             case 16: // Thống kê doanh thu theo khoảng thời gian

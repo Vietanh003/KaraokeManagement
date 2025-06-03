@@ -101,6 +101,57 @@ void hienThiTatCaPhongHat(Node* goc) {
     wprintf(L"======================================\n");
 }
 
+typedef struct {
+    PhongHat* phong;
+    int so_lan_thue;
+} TopPhong;
+
+void timTop3(Node* goc, TopPhong top[3]) {
+    if (!goc) return;
+
+    timTop3(goc->left, top);
+
+    PhongHat* ph = (PhongHat*)goc->du_lieu;
+
+    for (int i = 0; i < 3; ++i) {
+        if (top[i].phong == NULL || ph->so_lan_thue > top[i].so_lan_thue) {
+            // Dịch phần tử phía sau
+            for (int j = 2; j > i; --j) {
+                top[j] = top[j - 1];
+            }
+            top[i].phong = ph;
+            top[i].so_lan_thue = ph->so_lan_thue;
+            break;
+        }
+    }
+
+    timTop3(goc->right, top);
+}
+
+void tangSoLanThuePhongHat(Node* goc, const wchar_t* ma_phong, const wchar_t* ten_file) {
+    if (!goc) {
+        wprintf(L"Danh sách phòng hát trống!\n");
+        return;
+    }
+
+    PhongHat temp = { 0 };
+    wcscpy_s(temp.ma_phong, MAX_ID, ma_phong);
+    Node* node = timNode(goc, &temp, soSanhPhongHat);
+
+    if (!node) {
+        wprintf(L"Không tìm thấy phòng hát có mã %ls!\n", ma_phong);
+        return;
+    }
+
+    PhongHat* ph = (PhongHat*)node->du_lieu;
+    ph->so_lan_thue += 1;
+
+    ghiPhongHatRaFile(goc, ten_file);
+
+    wprintf(L"Đã tăng số lần thuê của phòng %ls lên %d.\n", ma_phong, ph->so_lan_thue);
+}
+
+
 void thongKeTop3Phong(Node* goc) {
     wprintf(L"Thống kê Top 3 phòng hát có số lần thuê nhiều nhất:\n");
 
@@ -109,45 +160,18 @@ void thongKeTop3Phong(Node* goc) {
         return;
     }
 
-   
-    Node* top1 = NULL;
-    Node* top2 = NULL;
-    Node* top3 = NULL;
+    TopPhong top[3] = { {NULL, 0}, {NULL, 0}, {NULL, 0} };
 
-  
-    std::stack<Node*> stack;
-    stack.push(goc);
+    timTop3(goc, top);
 
-    while (!stack.empty()) {
-        Node* current = stack.top();
-        stack.pop();
-
-    
-        if (!top1 || current->data.so_lan_thue > top1->data.so_lan_thue) {
-            top3 = top2;
-            top2 = top1;
-            top1 = current;
+    for (int i = 0; i < 3; ++i) {
+        if (top[i].phong) {
+            wprintf(L"%d. Mã phòng: %ls, Loại: %ls, Số lần thuê: %d\n",
+                i + 1,
+                top[i].phong->ma_phong,
+                top[i].phong->loai_phong,
+                top[i].phong->so_lan_thue);
         }
-        else if (!top2 || current->data.so_lan_thue > top2->data.so_lan_thue) {
-            top3 = top2;
-            top2 = current;
-        }
-        else if (!top3 || current->data.so_lan_thue > top3->data.so_lan_thue) {
-            top3 = current;
-        }
-
-        if (current->phai) stack.push(current->phai);
-        if (current->trai) stack.push(current->trai);
-    }
-
-  
-    if (top1) {
-        wprintf(L"1. Mã phòng: %ls, Loại: %ls, Số lần thuê: %d\n", top1->data.ma_phong, top1->data.loai_phong, top1->data.so_lan_thue);
-    }
-    if (top2) {
-        wprintf(L"2. Mã phòng: %ls, Loại: %ls, Số lần thuê: %d\n", top2->data.ma_phong, top2->data.loai_phong, top2->data.so_lan_thue);
-    }
-    if (top3) {
-        wprintf(L"3. Mã phòng: %ls, Loại: %ls, Số lần thuê: %d\n", top3->data.ma_phong, top3->data.loai_phong, top3->data.so_lan_thue);
     }
 }
+

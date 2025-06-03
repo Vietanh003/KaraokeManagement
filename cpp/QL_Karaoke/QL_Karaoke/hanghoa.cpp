@@ -189,16 +189,21 @@ void chinhSuaHangHoa(Node* goc, const wchar_t* ma_hang_can_sua) {
         hh->gia_tien = gia_moi;
     }
     while (getwchar() != L'\n'); // Xóa bộ đệm
-
     wprintf(L"Giảm giá hiện tại: %.2lf\n", hh->giam_gia);
     wprintf(L"Nhập giảm giá mới (âm để giữ nguyên): ");
     double giam_moi;
-    if (wscanf_s(L"%lf", &giam_moi) == 1 && giam_moi >= 0) {
-        hh->giam_gia = giam_moi;
+    if (wscanf_s(L"%lf", &giam_moi) == 1) {
+        if (giam_moi >= 0) {
+            if (giam_moi <= hh->gia_tien * 0.3) {
+                hh->giam_gia = giam_moi;
+            }
+            else {
+                wprintf(L"Giảm giá không được vượt quá 30%% giá tiền hiện tại (%.2lf)!\n", hh->gia_tien * 0.3);
+            }
+        }
     }
     while (getwchar() != L'\n');
 
-    wprintf(L"Đã cập nhật thông tin hàng hóa %ls thành công!\n", hh->ma_hang);
 }
 Node* xoaHangHoa(Node* goc, const wchar_t* ma_hang_can_xoa, int* da_xoa) {
     if (!goc) return NULL;

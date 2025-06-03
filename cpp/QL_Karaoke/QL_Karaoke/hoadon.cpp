@@ -63,10 +63,11 @@ Node* docHoaDonTuFile(const wchar_t* ten_file) {
     return goc;
 }
 void themHoaDon(Node** goc_hoa_don, Node* cay_khach_hang, Node* cay_phong_hat, Node* cay_hang_hoa, Node** cay_chi_tiet_hoa_don, const wchar_t* ten_file_hoa_don, const wchar_t* ten_file_chi_tiet) {
-    // Generate automatic invoice ID
     wchar_t ma_hoa_don[MAX_ID];
     wchar_t so_dien_thoai[15];
     wchar_t ma_khach_hang[MAX_ID];
+    double gia_tien, giam_gia;
+    const wchar_t* ten_file_phong_hat = L"phonghat.txt";
     Node* last_node = *goc_hoa_don;
     while (last_node && last_node->right) last_node = last_node->right;
     taoMaTuDong(L"HD", last_node ? ((HoaDon*)last_node->du_lieu)->ma_hoa_don : NULL, ma_hoa_don, MAX_ID);
@@ -165,7 +166,7 @@ void themHoaDon(Node** goc_hoa_don, Node* cay_khach_hang, Node* cay_phong_hat, N
     tm_gio_thue.tm_sec = ss;
 
     time_t gio_thue = mktime(&tm_gio_thue);
-    time_t gio_ra = time(NULL); // giờ ra là thời điểm hiện tại (06:43 PM on May 25, 2025)
+    time_t gio_ra = time(NULL); 
 
     if (gio_ra <= gio_thue) {
         wprintf(L"Giờ ra phải sau giờ thuê! Thời gian hiện tại: %ls\n", _wctime(&gio_ra));
@@ -186,7 +187,6 @@ void themHoaDon(Node** goc_hoa_don, Node* cay_khach_hang, Node* cay_phong_hat, N
         room_cost = hours * (is_after_18 ? 299000.0f : 199000.0f);
     }
 
-    // Add invoice details
     float tong_tien = room_cost;
     wprintf(L"\nDanh sách hàng hóa:\n");
     hienThiTatCaHangHoa(cay_hang_hoa);
@@ -242,7 +242,6 @@ void themHoaDon(Node** goc_hoa_don, Node* cay_khach_hang, Node* cay_phong_hat, N
 
     *goc_hoa_don = chenNode(*goc_hoa_don, hd, soSanhHoaDon);
 
-    // Save to file
     FILE* file;
     errno_t err = _wfopen_s(&file, ten_file_hoa_don, L"a,ccs=UTF-8");
     if (err != 0 || !file) {
@@ -261,22 +260,22 @@ void themHoaDon(Node** goc_hoa_don, Node* cay_khach_hang, Node* cay_phong_hat, N
             ngay, gio_thue_str, gio_ra_str);
         fclose(file);
     }
-
+    tangSoLanThuePhongHat(node_ph, ma_phong, ten_file_phong_hat);
     wprintf(L"Đã thêm hóa đơn %ls thành công!\n", ma_hoa_don);
 }
 
+void timHoaDonTheoMa(Node* goc, Node* cay_chi_tiet_hoa_don, const wchar_t* ma_hoa_don) {
+    HoaDon hd_tim = { 0 };
+    wcscpy_s(hd_tim.ma_hoa_don, MAX_ID, ma_hoa_don);
 
-//void timHoaDonTheoMa(Node* goc, const wchar_t* ma_hoa_don) {
-//    HoaDon hd_tim = { 0 };
-//    wcscpy_s(hd_tim.ma_hoa_don, MAX_ID, ma_hoa_don);
-//    Node* node_hd = timNode(goc, &hd_tim, soSanhHoaDon);
-//    if (node_hd) {
-//        inHoaDon(node_hd, NULL);
-//    }
-//    else {
-//        wprintf(L"Không tìm thấy hóa đơn %ls!\n", ma_hoa_don);
-//    }
-//}
+    Node* node_hd = timNode(goc, &hd_tim, soSanhHoaDon);
+    if (node_hd) {
+        inThongTinHoaDon(node_hd, cay_chi_tiet_hoa_don);
+    }
+    else {
+        wprintf(L"Không tìm thấy hóa đơn %ls!\n", ma_hoa_don);
+    }
+}
 
 int soSanhHoaDonTheoTongTien(const void* a, const void* b) {
     const HoaDon* hd1 = (const HoaDon*)a;
@@ -406,7 +405,6 @@ void inThongTinHoaDon(Node* node, Node* cay_chi_tiet_hoa_don) {
         wprintf(L"Hóa đơn %ls: Thời gian không hợp lệ!\n", hd->ma_hoa_don);
         return;
     }
-    wprintf(L"[DEBUG] Mã hóa đơn: %ls\n", hd->ma_hoa_don);
 
     struct tm tm_thue, tm_ra;
     errno_t err1 = localtime_s(&tm_thue, &hd->gio_thue);
