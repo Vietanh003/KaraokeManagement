@@ -269,16 +269,13 @@ void xuLyMenu(Node** cay_khach_hang, Node** cay_phong_hat, Node** cay_hoa_don, N
 
             case 11: // Sắp xếp hóa đơn theo tổng tiền (giảm dần)
             {
-                // TODO: Implement sapXepHoaDonTheoTongTien
-                wprintf(L"Chức năng sắp xếp hóa đơn theo tổng tiền chưa được triển khai!\n");
+                sapXepHoaDonTheoTongTien(*cay_hoa_don, *cay_chi_tiet_hoa_don);
             }
             break;
 
             case 12: // Sắp xếp hóa đơn theo mã khách hàng (tăng dần)
             {
-                // TODO: Implement sapXepHoaDonTheoMaKhachHang
-            
-                wprintf(L"Chức năng sắp xếp hóa đơn theo mã khách hàng chưa được triển khai!\n");
+                sapXepHoaDonTheoMaKhachHang(*cay_hoa_don, *cay_chi_tiet_hoa_don);
             }
             break;
 
@@ -295,7 +292,7 @@ void xuLyMenu(Node** cay_khach_hang, Node** cay_phong_hat, Node** cay_hoa_don, N
                 wprintf(L"Nhập mã hóa đơn: ");
                 fgetws(ma_hoa_don, MAX_ID, stdin);
                 ma_hoa_don[wcscspn(ma_hoa_don, L"\n")] = 0;
-                timHoaDonTheoMa(*cay_hoa_don, ma_hoa_don);
+               /* timHoaDonTheoMa(*cay_hoa_don, ma_hoa_don);*/
             }
             break;
 

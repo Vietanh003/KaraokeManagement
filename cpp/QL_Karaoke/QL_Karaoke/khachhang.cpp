@@ -204,7 +204,7 @@ void lietKeHoaDonTheoKhachHang(Node* goc, const wchar_t* ma_khach_hang) {
         return;
     }
 
-    inHoaDon(kh->ds_hoa_don, NULL);
+    inThongTinHoaDon(goc, NULL);
 }
 void hienThiKhachHang(Node* node, int* count) {
     if (!node) return;

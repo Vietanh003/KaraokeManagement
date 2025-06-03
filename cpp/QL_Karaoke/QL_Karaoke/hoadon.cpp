@@ -266,26 +266,125 @@ void themHoaDon(Node** goc_hoa_don, Node* cay_khach_hang, Node* cay_phong_hat, N
 }
 
 
-void timHoaDonTheoMa(Node* goc, const wchar_t* ma_hoa_don) {
-    HoaDon hd_tim = { 0 };
-    wcscpy_s(hd_tim.ma_hoa_don, MAX_ID, ma_hoa_don);
-    Node* node_hd = timNode(goc, &hd_tim, soSanhHoaDon);
-    if (node_hd) {
-        inHoaDon(node_hd, NULL);
+//void timHoaDonTheoMa(Node* goc, const wchar_t* ma_hoa_don) {
+//    HoaDon hd_tim = { 0 };
+//    wcscpy_s(hd_tim.ma_hoa_don, MAX_ID, ma_hoa_don);
+//    Node* node_hd = timNode(goc, &hd_tim, soSanhHoaDon);
+//    if (node_hd) {
+//        inHoaDon(node_hd, NULL);
+//    }
+//    else {
+//        wprintf(L"Không tìm thấy hóa đơn %ls!\n", ma_hoa_don);
+//    }
+//}
+
+int soSanhHoaDonTheoTongTien(const void* a, const void* b) {
+    const HoaDon* hd1 = (const HoaDon*)a;
+    const HoaDon* hd2 = (const HoaDon*)b;
+    if (hd1->tong_tien > hd2->tong_tien) return -1;
+    if (hd1->tong_tien < hd2->tong_tien) return 1;
+    return wcscmp(hd1->ma_hoa_don, hd2->ma_hoa_don);
+}
+void themVaoCayTheoTongTien(Node* goc, Node** cay_theo_tong_tien) {
+    if (!goc) return;
+
+    themVaoCayTheoTongTien(goc->left, cay_theo_tong_tien);
+
+    HoaDon* hd = (HoaDon*)malloc(sizeof(HoaDon));
+    if (!hd) {
+        wprintf(L"Lỗi cấp phát bộ nhớ cho hóa đơn!\n");
+        return;
     }
-    else {
-        wprintf(L"Không tìm thấy hóa đơn %ls!\n", ma_hoa_don);
-    }
+    memcpy(hd, goc->du_lieu, sizeof(HoaDon));
+
+    *cay_theo_tong_tien = chenNode(*cay_theo_tong_tien, hd, soSanhHoaDonTheoTongTien);
+
+    themVaoCayTheoTongTien(goc->right, cay_theo_tong_tien);
+}
+
+void inCayTheoTongTien(Node* goc, Node* cay_chi_tiet_hoa_don) {
+    if (!goc) return;
+    inCayTheoTongTien(goc->left, cay_chi_tiet_hoa_don);
+    inThongTinHoaDon(goc, cay_chi_tiet_hoa_don);
+    inCayTheoTongTien(goc->right, cay_chi_tiet_hoa_don);
 }
 
 void sapXepHoaDonTheoTongTien(Node* goc, Node* cay_chi_tiet_hoa_don) {
-    wprintf(L"Danh sách hóa đơn:\n");
-    inHoaDon(goc, cay_chi_tiet_hoa_don);
+    if (!goc) {
+        wprintf(L"Không có hóa đơn.\n");
+        return;
+    }
+
+    wprintf(L"Danh sách hóa đơn trước khi sắp xếp:\n");
+    hienThiTatCaHoaDon(goc, cay_chi_tiet_hoa_don);
+
+    Node* cay_theo_tong_tien = NULL;
+    themVaoCayTheoTongTien(goc, &cay_theo_tong_tien);
+
+    wprintf(L"Danh sách hóa đơn sắp xếp theo tổng tiền (giảm dần):\n");
+    inCayTheoTongTien(cay_theo_tong_tien, cay_chi_tiet_hoa_don);
+}
+
+void themVaoCayTheoMaKH(Node* goc, Node** cay_theo_ma_kh) {
+    if (!goc) return;
+
+    themVaoCayTheoMaKH(goc->left, cay_theo_ma_kh);
+
+
+    HoaDon* hd_cu = (HoaDon*)goc->du_lieu;
+    HoaDon* hd_moi = (HoaDon*)malloc(sizeof(HoaDon));
+    if (!hd_moi) {
+        wprintf(L"Lỗi cấp phát bộ nhớ!\n");
+        return;
+    }
+    memcpy(hd_moi, hd_cu, sizeof(HoaDon));
+
+    *cay_theo_ma_kh = chenNode(*cay_theo_ma_kh, hd_moi, soSanhHoaDonTheoMaKhachHang);
+
+    themVaoCayTheoMaKH(goc->right, cay_theo_ma_kh);
+}
+
+
+int soSanhHoaDonTheoMaKhachHang(const void* a, const void* b) {
+    const HoaDon* hd1 = (const HoaDon*)a;
+    const HoaDon* hd2 = (const HoaDon*)b;
+    int cmp = wcscmp(hd1->ma_khach_hang, hd2->ma_khach_hang);
+    if (cmp != 0) return cmp;
+    return wcscmp(hd1->ma_hoa_don, hd2->ma_hoa_don);
+}
+
+void inCayTheoMaKH(Node* goc, Node* cay_chi_tiet_hoa_don) {
+    if (!goc) return;
+    inCayTheoMaKH(goc->left, cay_chi_tiet_hoa_don);
+    inThongTinHoaDon(goc, cay_chi_tiet_hoa_don);
+    inCayTheoMaKH(goc->right, cay_chi_tiet_hoa_don);
 }
 
 void sapXepHoaDonTheoMaKhachHang(Node* goc, Node* cay_chi_tiet_hoa_don) {
-    wprintf(L"Danh sách hóa đơn:\n");
-    inHoaDon(goc, cay_chi_tiet_hoa_don);
+    if (!goc) {
+        wprintf(L"Không có hóa đơn.\n");
+        return;
+    }
+
+    wprintf(L"Danh sách hóa đơn trước khi sắp xếp:\n");
+    hienThiTatCaHoaDon(goc, cay_chi_tiet_hoa_don);
+
+    Node* cay_theo_ma_kh = NULL;
+    themVaoCayTheoMaKH(goc, &cay_theo_ma_kh);
+
+    wprintf(L"Danh sách hóa đơn sắp xếp theo mã khách hàng (tăng dần):\n");
+    inCayTheoMaKH(cay_theo_ma_kh, cay_chi_tiet_hoa_don);
+
+    freeTree(cay_theo_ma_kh);
+}
+void hienThiTatCaHoaDon_DeQuy(Node* node, Node* cay_chi_tiet_hoa_don) {
+    if (!node) return;
+
+    hienThiTatCaHoaDon_DeQuy(node->left, cay_chi_tiet_hoa_don);
+
+    inThongTinHoaDon(node, cay_chi_tiet_hoa_don);
+
+    hienThiTatCaHoaDon_DeQuy(node->right, cay_chi_tiet_hoa_don);
 }
 
 void hienThiTatCaHoaDon(Node* goc, Node* cay_chi_tiet_hoa_don) {
@@ -295,43 +394,42 @@ void hienThiTatCaHoaDon(Node* goc, Node* cay_chi_tiet_hoa_don) {
     }
 
     wprintf(L"\n===== DANH SÁCH TẤT CẢ HÓA ĐƠN =====\n");
-    inHoaDon(goc, cay_chi_tiet_hoa_don);
+    hienThiTatCaHoaDon_DeQuy(goc, cay_chi_tiet_hoa_don);
     wprintf(L"====================================\n");
 }
 
-void inHoaDon(Node* node, Node* cay_chi_tiet_hoa_don) {
-    if (node) {
-        inHoaDon(node->left, cay_chi_tiet_hoa_don);
-        HoaDon* hd = (HoaDon*)node->du_lieu;
 
-        if (hd->gio_thue == (time_t)-1 || hd->gio_ra == (time_t)-1) {
-            wprintf(L"Hóa đơn %ls: Thời gian không hợp lệ!\n", hd->ma_hoa_don);
-            return;
-        }
+void inThongTinHoaDon(Node* node, Node* cay_chi_tiet_hoa_don) {
+    HoaDon* hd = (HoaDon*)node->du_lieu;
 
-        struct tm tm_thue, tm_ra;
-        localtime_s(&tm_thue, &hd->gio_thue);
-        localtime_s(&tm_ra, &hd->gio_ra);
+    if (hd->gio_thue == (time_t)-1 || hd->gio_ra == (time_t)-1) {
+        wprintf(L"Hóa đơn %ls: Thời gian không hợp lệ!\n", hd->ma_hoa_don);
+        return;
+    }
+    wprintf(L"[DEBUG] Mã hóa đơn: %ls\n", hd->ma_hoa_don);
 
-        if (tm_thue.tm_year < 0 || tm_ra.tm_year < 0) {
-            wprintf(L"Hóa đơn %ls: Không thể chuyển đổi thời gian!\n", hd->ma_hoa_don);
-            return;
-        }
+    struct tm tm_thue, tm_ra;
+    errno_t err1 = localtime_s(&tm_thue, &hd->gio_thue);
+    errno_t err2 = localtime_s(&tm_ra, &hd->gio_ra);
 
-        wchar_t ngay[26], gio_thue_str[20], gio_ra_str[20], tong_tien_vnd[64];
-        wcsftime(ngay, sizeof(ngay) / sizeof(wchar_t), L"%Y-%m-%d", &tm_thue);
-        wcsftime(gio_thue_str, sizeof(gio_thue_str) / sizeof(wchar_t), L"%H:%M:%S", &tm_thue);
-        wcsftime(gio_ra_str, sizeof(gio_ra_str) / sizeof(wchar_t), L"%H:%M:%S", &tm_ra);
-        dinhDangVND(hd->tong_tien, tong_tien_vnd, sizeof(tong_tien_vnd) / sizeof(wchar_t));
+    if (err1 != 0 || err2 != 0 ||
+        tm_thue.tm_mon < 0 || tm_thue.tm_mon > 11 ||
+        tm_ra.tm_mon < 0 || tm_ra.tm_mon > 11) {
+        wprintf(L"Hóa đơn %ls: Thời gian không hợp lệ hoặc không thể chuyển đổi!\n", hd->ma_hoa_don);
+        return;
+    }
 
-        wprintf(L"Hóa đơn: %ls, KH: %ls, Phòng: %ls, Tổng tiền: %ls, Ngày: %ls, Giờ thuê: %ls, Giờ ra: %ls\n",
-            hd->ma_hoa_don, hd->ma_khach_hang, hd->ma_phong, tong_tien_vnd, ngay, gio_thue_str, gio_ra_str);
+    wchar_t ngay[26], gio_thue_str[20], gio_ra_str[20], tong_tien_vnd[64];
+    wcsftime(ngay, sizeof(ngay) / sizeof(wchar_t), L"%Y-%m-%d", &tm_thue);
+    wcsftime(gio_thue_str, sizeof(gio_thue_str) / sizeof(wchar_t), L"%H:%M:%S", &tm_thue);
+    wcsftime(gio_ra_str, sizeof(gio_ra_str) / sizeof(wchar_t), L"%H:%M:%S", &tm_ra);
+    dinhDangVND(hd->tong_tien, tong_tien_vnd, sizeof(tong_tien_vnd) / sizeof(wchar_t));
 
-        if (cay_chi_tiet_hoa_don) {
-            wprintf(L"  Chi tiết hóa đơn:\n");
-            hienThiChiTietHoaDonTheoMaHoaDon(cay_chi_tiet_hoa_don, hd->ma_hoa_don);
-        }
+    wprintf(L"Hóa đơn: %ls, KH: %ls, Phòng: %ls, Tổng tiền: %ls, Ngày: %ls, Giờ thuê: %ls, Giờ ra: %ls\n",
+        hd->ma_hoa_don, hd->ma_khach_hang, hd->ma_phong, tong_tien_vnd, ngay, gio_thue_str, gio_ra_str);
 
-        inHoaDon(node->right, cay_chi_tiet_hoa_don);
+    if (cay_chi_tiet_hoa_don) {
+        wprintf(L"  Chi tiết hóa đơn:\n");
+        hienThiChiTietHoaDonTheoMaHoaDon(cay_chi_tiet_hoa_don, hd->ma_hoa_don);
     }
 }
