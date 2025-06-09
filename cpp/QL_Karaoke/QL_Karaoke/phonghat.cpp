@@ -15,15 +15,17 @@ Node* docPhongHatTuFile(const wchar_t* ten_file) {
         return NULL;
     }
 
-    wchar_t ma_phong[MAX_ID], loai_phong[20];
-    int so_lan_thue;
-    while (fwscanf_s(file, L"%ls %ls %d", ma_phong, (unsigned)_countof(ma_phong),
-        loai_phong, (unsigned)_countof(loai_phong), &so_lan_thue) == 3) {
+    wchar_t ma_phong[MAX_ID], loai_phong[20], trang_thai[20];
+    int so_lan_thue, trang_thai;
+    while (fwscanf_s(file, L"%ls %ls %d %d", ma_phong, (unsigned)_countof(ma_phong),
+        loai_phong, (unsigned)_countof(loai_phong), &so_lan_thue, &trang_thai) == 4) {
+
         PhongHat* ph = (PhongHat*)malloc(sizeof(PhongHat));
         if (ph) {
             wcscpy_s(ph->ma_phong, MAX_ID, ma_phong);
             wcscpy_s(ph->loai_phong, 20, loai_phong);
             ph->so_lan_thue = so_lan_thue;
+            ph->trang_thai = trang_thai;
             goc = chenNode(goc, ph, soSanhPhongHat);
         }
     }
@@ -36,7 +38,7 @@ void ghiNode(Node* node, FILE* file) {
     if (!node) return;
     ghiNode(node->left, file);
     PhongHat* ph = (PhongHat*)node->du_lieu;
-    fwprintf(file, L"%ls %ls %d\n", ph->ma_phong, ph->loai_phong, ph->so_lan_thue);
+    fwprintf(file, L"%ls %ls %d %d\n", ph->ma_phong, ph->loai_phong, ph->so_lan_thue, ph->trang_thai);
     ghiNode(node->right, file);
 }
 
@@ -73,6 +75,7 @@ void themPhongHatMoi(Node** goc, const wchar_t* ma_phong, const wchar_t* loai_ph
     wcscpy_s(ph->ma_phong, MAX_ID, ma_phong);
     wcscpy_s(ph->loai_phong, 20, loai_phong);
     ph->so_lan_thue = 0;
+    ph->trang_thai = 0;
 
     *goc = chenNode(*goc, ph, soSanhPhongHat);
     ghiPhongHatRaFile(*goc, ten_file);
@@ -84,8 +87,9 @@ void inPhongHat(Node* node) {
     if (node) {
         inPhongHat(node->left);
         PhongHat* ph = (PhongHat*)node->du_lieu;
-        wprintf(L"Phòng: %ls, Loại: %ls, Số lần thuê: %d\n",
-            ph->ma_phong, ph->loai_phong, ph->so_lan_thue);
+        wchar_t* tt = ph->trang_thai == 0 ? L"Trống" : L"Đang sử dụng";
+        wprintf(L"Phòng: %ls, Loại: %ls, Số lần thuê: %d, Trạng thái: %ls\n",
+            ph->ma_phong, ph->loai_phong, ph->so_lan_thue, tt);
         inPhongHat(node->right);
     }
 }
@@ -151,7 +155,6 @@ void tangSoLanThuePhongHat(Node* goc, const wchar_t* ma_phong, const wchar_t* te
     wprintf(L"Đã tăng số lần thuê của phòng %ls lên %d.\n", ma_phong, ph->so_lan_thue);
 }
 
-
 void thongKeTop3Phong(Node* goc) {
     wprintf(L"Thống kê Top 3 phòng hát có số lần thuê nhiều nhất:\n");
 
@@ -166,12 +169,32 @@ void thongKeTop3Phong(Node* goc) {
 
     for (int i = 0; i < 3; ++i) {
         if (top[i].phong) {
-            wprintf(L"%d. Mã phòng: %ls, Loại: %ls, Số lần thuê: %d\n",
+            wprintf(L"%d. Mã phòng: %ls, Loại: %ls, Số lần thuê: %d, Trạng thái: %ls\n",
                 i + 1,
                 top[i].phong->ma_phong,
                 top[i].phong->loai_phong,
-                top[i].phong->so_lan_thue);
+                top[i].phong->so_lan_thue,
+                top[i].phong->trang_thai); // Include trang_thai
         }
     }
 }
 
+int kiemTraPhongTrong(Node* goc, const wchar_t* ma_phong) {
+    PhongHat ph_tim = { 0 };
+    wcscpy_s(ph_tim.ma_phong, MAX_ID, ma_phong);
+    Node* node_ph = timNode(goc, &ph_tim, soSanhPhongHat);
+    if (!node_ph) return 0;
+    PhongHat* ph = (PhongHat*)node_ph->du_lieu;
+    return ph->trang_thai == 0;
+}
+
+void capNhatTrangThaiPhong(Node* goc, const wchar_t* ma_phong, int trang_thai, const wchar_t* ten_file) {
+    PhongHat ph_tim = { 0 };
+    wcscpy_s(ph_tim.ma_phong, MAX_ID, ma_phong);
+    Node* node_ph = timNode(goc, &ph_tim, soSanhPhongHat);
+    if (node_ph) {
+        PhongHat* ph = (PhongHat*)node_ph->du_lieu;
+        ph->trang_thai = trang_thai;
+        ghiPhongHatRaFile(goc, ten_file);
+    }
+}

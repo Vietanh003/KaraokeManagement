@@ -26,7 +26,7 @@ void hienThiMenu() {
     wprintf(L"║  1. Thêm phòng hát mới             ║\n");
     wprintf(L"║  2. Thêm một khách hàng mới        ║\n");
     wprintf(L"║  3. Thêm hàng hóa mới              ║\n");
-    wprintf(L"║  4. Thêm hóa đơn & chi tiết hóa đơn║\n");
+    wprintf(L"║  4. Bắt đầu thuê phòng             ║\n");
     wprintf(L"║  5. Hiển thị tất cả khách hàng     ║\n");
     wprintf(L"║  6. Hiển thị tất cả phòng hát      ║\n");
     wprintf(L"║  7. Hiển thị tất cả hàng hóa       ║\n");
@@ -49,11 +49,13 @@ void hienThiMenu() {
     wprintf(L"║ 19. Thống kê doanh thu quý         ║\n");
     wprintf(L"║ 20. Thống kê doanh thu theo        ║\n");
     wprintf(L"║     năm                            ║\n");
-    wprintf(L"║ 21. Thoát                          ║\n");
+    wprintf(L"║ 21. Hiển thị tất cả phòng hát      ║\n"); // New option to display rooms
+    wprintf(L"║ 22. Hoàn tất thuê phòng            ║\n"); // New option for completing rental
+    wprintf(L"║ 23. Thoát                          ║\n"); // Updated exit option
     wprintf(L"╚════════════════════════════════════╝\n");
 
     SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_INTENSITY);
-    wprintf(L"\nNhập lựa chọn (1-21): ");
+    wprintf(L"\nNhập lựa chọn (1-23): ");
 
     SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 }
@@ -200,15 +202,14 @@ void xuLyMenu(Node** cay_khach_hang, Node** cay_phong_hat, Node** cay_hoa_don, N
                     }
                 } while (!valid_discount);
 
-
                 themHangHoaMoi(cay_hang_hoa, ten_hang, gia_tien, giam_gia, ten_file_hang_hoa);
             }
             break;
 
-            case 4: // Thêm hóa đơn và chi tiết hóa đơn
+            case 4: // Bắt đầu thuê phòng
             {
-                themHoaDon(cay_hoa_don, *cay_khach_hang, *cay_phong_hat, *cay_hang_hoa, cay_chi_tiet_hoa_don, ten_file_hoa_don, ten_file_chi_tiet);
-                *cay_khach_hang = docKhachHangTuFile(ten_file_khach_hang); // Reload to update customer tree
+                batDauThuePhong(cay_hoa_don, *cay_khach_hang, *cay_phong_hat, ten_file_hoa_don);
+                *cay_hoa_don = docHoaDonTuFile(ten_file_hoa_don); // Reload invoice tree
             }
             break;
 
@@ -298,7 +299,6 @@ void xuLyMenu(Node** cay_khach_hang, Node** cay_phong_hat, Node** cay_hoa_don, N
                 ma_hoa_don[wcscspn(ma_hoa_don, L"\n")] = 0;
 
                 timHoaDonTheoMa(*cay_hoa_don, *cay_chi_tiet_hoa_don, ma_hoa_don);
-
             }
             break;
 
@@ -309,10 +309,11 @@ void xuLyMenu(Node** cay_khach_hang, Node** cay_phong_hat, Node** cay_hoa_don, N
                 fgetws(ma_khach_hang, MAX_ID, stdin);
                 ma_khach_hang[wcscspn(ma_khach_hang, L"\n")] = 0;
 
-                lietKeHoaDonTheoKhachHang(*cay_hoa_don, ma_khach_hang, *cay_chi_tiet_hoa_don,*cay_khach_hang);
+                lietKeHoaDonTheoKhachHang(*cay_hoa_don, ma_khach_hang, *cay_chi_tiet_hoa_don, *cay_khach_hang);
                 break;
             }
             break;
+
             case 16: // Thống kê doanh thu theo khoảng thời gian
             {
                 wchar_t bat_dau[20], ket_thuc[20];
@@ -346,7 +347,7 @@ void xuLyMenu(Node** cay_khach_hang, Node** cay_phong_hat, Node** cay_hoa_don, N
             {
                 wchar_t ngay[20];
                 wprintf(L"Nhập ngày (YYYY-MM-DD): ");
-                fgetws(ngay, _countof(ngay), stdin); 
+                fgetws(ngay, _countof(ngay), stdin);
                 trimString(ngay);
 
                 int year, month, day;
@@ -362,8 +363,8 @@ void xuLyMenu(Node** cay_khach_hang, Node** cay_phong_hat, Node** cay_hoa_don, N
 
                 double doanh_thu = thongKeDoanhThuTheoNgay(*cay_hoa_don, year, month, day);
 
-                wchar_t ket_qua[64]; 
-                dinhDangVND(doanh_thu, ket_qua, _countof(ket_qua)); 
+                wchar_t ket_qua[64];
+                dinhDangVND(doanh_thu, ket_qua, _countof(ket_qua));
 
                 wprintf(L"Doanh thu ngày %ls: %ls\n", ngay, ket_qua);
             }
@@ -429,7 +430,20 @@ void xuLyMenu(Node** cay_khach_hang, Node** cay_phong_hat, Node** cay_hoa_don, N
             }
             break;
 
-            case 21: // Thoát
+            case 21: // Hiển thị tất cả phòng hát
+            {
+                hienThiTatCaPhongHat(*cay_phong_hat);
+            }
+            break;
+
+            case 22: // Hoàn tất thuê phòng
+            {
+                hoanTatThuePhong(cay_hoa_don, *cay_phong_hat, *cay_hang_hoa, cay_chi_tiet_hoa_don, ten_file_hoa_don, ten_file_chi_tiet);
+                *cay_hoa_don = docHoaDonTuFile(ten_file_hoa_don); // Reload invoice tree
+            }
+            break;
+
+            case 23: // Thoát
             {
                 wprintf(L"Thoát chương trình.\n");
             }
@@ -446,7 +460,7 @@ void xuLyMenu(Node** cay_khach_hang, Node** cay_phong_hat, Node** cay_hoa_don, N
             wprintf(L"Lựa chọn không hợp lệ!\n");
             while (getwchar() != L'\n');
         }
-    } while (lua_chon != 17);
+    } while (lua_chon != 23);
 }
 int main() {
     SetConsoleOutputCP(CP_UTF8);

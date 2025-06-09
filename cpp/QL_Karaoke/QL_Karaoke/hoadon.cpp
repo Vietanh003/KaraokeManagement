@@ -62,208 +62,6 @@ Node* docHoaDonTuFile(const wchar_t* ten_file) {
     fclose(file);
     return goc;
 }
-void themHoaDon(Node** goc_hoa_don, Node* cay_khach_hang, Node* cay_phong_hat, Node* cay_hang_hoa, Node** cay_chi_tiet_hoa_don, const wchar_t* ten_file_hoa_don, const wchar_t* ten_file_chi_tiet) {
-    wchar_t ma_hoa_don[MAX_ID];
-    wchar_t so_dien_thoai[15];
-    wchar_t ma_khach_hang[MAX_ID];
-    double gia_tien, giam_gia;
-    const wchar_t* ten_file_phong_hat = L"phonghat.txt";
-    Node* last_node = *goc_hoa_don;
-    while (last_node && last_node->right) last_node = last_node->right;
-    taoMaTuDong(L"HD", last_node ? ((HoaDon*)last_node->du_lieu)->ma_hoa_don : NULL, ma_hoa_don, MAX_ID);
-
-    wprintf(L"Nhập số điện thoại khách hàng: ");
-    fgetws(so_dien_thoai, 15, stdin);
-    trimString(so_dien_thoai);
-    if (wcslen(so_dien_thoai) == 0) {
-        wprintf(L"Số điện thoại không được để trống!\n");
-        return;
-    }
-
-    const wchar_t* ten_file_khach_hang = L"khachhang.txt";
-
-    // Tìm khách hàng
-    const wchar_t* ma_khach_tim_thay = timMaKhachHangTheoSoDienThoai(so_dien_thoai, ten_file_khach_hang);
-    if (ma_khach_tim_thay) {
-        wcscpy_s(ma_khach_hang, MAX_ID, ma_khach_tim_thay);
-
-        // Gọi hàm thêm khách hàng
-        Node* new_cay_khach_hang = themKhachHangMoi(cay_khach_hang, ma_khach_hang, L"", so_dien_thoai, ten_file_khach_hang);
-        if (new_cay_khach_hang != cay_khach_hang) {
-            cay_khach_hang = new_cay_khach_hang;
-        }
-    }
-    else {
-       
-        wprintf(L"Không tìm thấy khách hàng với số điện thoại %ls. Thêm khách hàng mới...\n", so_dien_thoai);
-        wchar_t ten[MAX_NAME];
-        wprintf(L"Nhập tên khách hàng: ");
-        fgetws(ten, MAX_NAME, stdin);
-        trimString(ten);
-        if (wcslen(ten) == 0) {
-            wprintf(L"Tên khách hàng không được để trống!\n");
-            return;
-        }
-
-        // Tạo mã khách hàng mới
-        Node* last_kh = cay_khach_hang;
-        while (last_kh && last_kh->right) last_kh = last_kh->right;
-        taoMaTuDong(L"KH", last_kh ? ((KhachHang*)last_kh->du_lieu)->ma_khach_hang : NULL, ma_khach_hang, MAX_ID);
-
-        // Thêm khách hàng mới vào cây
-        Node* new_cay_khach_hang = themKhachHangMoi(cay_khach_hang, ma_khach_hang, ten, so_dien_thoai, ten_file_khach_hang);
-        if (new_cay_khach_hang != cay_khach_hang) {
-            cay_khach_hang = new_cay_khach_hang;
-        }
-        else {
-            wprintf(L"Thêm khách hàng thất bại!\n");
-            return;
-        }
-    }
-
-    wchar_t ma_phong[MAX_ID];
-    wprintf(L"Nhập mã phòng: ");
-    fgetws(ma_phong, MAX_ID, stdin);
-    trimString(ma_phong);
-    PhongHat ph_tim = { 0 };
-    wcscpy_s(ph_tim.ma_phong, MAX_ID, ma_phong);
-    Node* node_ph = timNode(cay_phong_hat, &ph_tim, soSanhPhongHat);
-    if (!node_ph) {
-        wprintf(L"Mã phòng %ls không tồn tại!\n", ma_phong);
-        return;
-    }
-    PhongHat* ph = (PhongHat*)node_ph->du_lieu;
-
-    // Nhập ngày thuê và giờ thuê
-    wchar_t ngay_thue_str[20], gio_thue_str[20];
-    int year, month, day, hh, mm, ss;
-
-    wprintf(L"Nhập ngày thuê (YYYY-MM-DD): ");
-    fgetws(ngay_thue_str, 20, stdin);
-    trimString(ngay_thue_str);
-    if (swscanf_s(ngay_thue_str, L"%d-%d-%d", &year, &month, &day) != 3 ||
-        year < 1900 || month < 1 || month > 12 || day < 1 || day > 31) {
-        wprintf(L"Ngày thuê không hợp lệ!\n");
-        return;
-    }
-
-    wprintf(L"Nhập giờ thuê (HH:MM:SS): ");
-    fgetws(gio_thue_str, 20, stdin);
-    trimString(gio_thue_str);
-    if (swscanf_s(gio_thue_str, L"%d:%d:%d", &hh, &mm, &ss) != 3 ||
-        hh < 0 || hh > 23 || mm < 0 || mm > 59 || ss < 0 || ss > 59) {
-        wprintf(L"Giờ thuê không hợp lệ!\n");
-        return;
-    }
-
-    // Tạo struct tm từ ngày + giờ
-    struct tm tm_gio_thue = { 0 };
-    tm_gio_thue.tm_year = year - 1900;
-    tm_gio_thue.tm_mon = month - 1;
-    tm_gio_thue.tm_mday = day;
-    tm_gio_thue.tm_hour = hh;
-    tm_gio_thue.tm_min = mm;
-    tm_gio_thue.tm_sec = ss;
-
-    time_t gio_thue = mktime(&tm_gio_thue);
-    time_t gio_ra = time(NULL); 
-
-    if (gio_ra <= gio_thue) {
-        wprintf(L"Giờ ra phải sau giờ thuê! Thời gian hiện tại: %ls\n", _wctime(&gio_ra));
-        return;
-    }
-    if (difftime(gio_ra, gio_thue) <= 0) {
-        wprintf(L"❌ Giờ thuê phải trước thời điểm hiện tại!\n");
-        return;
-    }
-
-    float hours = (float)(difftime(gio_ra, gio_thue) / 3600.0);
-    float room_cost = 0;
-    int is_after_18 = tm_gio_thue.tm_hour >= 18;
-    if (wcscmp(ph->loai_phong, L"VIP") == 0) {
-        room_cost = hours * (is_after_18 ? 499000.0f : 299000.0f);
-    }
-    else {
-        room_cost = hours * (is_after_18 ? 299000.0f : 199000.0f);
-    }
-
-    float tong_tien = room_cost;
-    wprintf(L"\nDanh sách hàng hóa:\n");
-    hienThiTatCaHangHoa(cay_hang_hoa);
-    wprintf(L"\nNhập chi tiết hóa đơn (nhập mã hàng '0' để kết thúc):\n");
-    while (1) {
-        wchar_t ma_hang[MAX_ID];
-        wprintf(L"Mã hàng: ");
-        fgetws(ma_hang, MAX_ID, stdin);
-        trimString(ma_hang);
-        if (wcscmp(ma_hang, L"0") == 0) break;
-
-        HangHoa hh_tim = { 0 };
-        wcscpy_s(hh_tim.ma_hang, MAX_ID, ma_hang);
-        Node* node_hh = timNode(cay_hang_hoa, &hh_tim, soSanhHangHoa);
-        if (!node_hh) {
-            wprintf(L"Mã hàng %ls không tồn tại!\n", ma_hang);
-            continue;
-        }
-        HangHoa* hh = (HangHoa*)node_hh->du_lieu;
-        if (!hh) {
-            wprintf(L"Dữ liệu hàng hóa không hợp lệ cho mã %ls!\n", ma_hang);
-            continue;
-        }
-
-        int so_luong;
-        wprintf(L"Số lượng: ");
-        wchar_t input[10];
-        fgetws(input, 10, stdin);
-        if (swscanf_s(input, L"%d", &so_luong) != 1 || so_luong <= 0) {
-            wprintf(L"Số lượng không hợp lệ!\n");
-            continue;
-        }
-
-        float don_gia = hh->gia_tien - hh->giam_gia;
-        if (don_gia < 0) don_gia = 0;
-        themChiTietHoaDonMoi(cay_chi_tiet_hoa_don, ma_hoa_don, ma_hang, so_luong, don_gia, ten_file_chi_tiet);
-        tong_tien += so_luong * don_gia;
-    }
-
-    // Tạo hóa đơn
-    HoaDon* hd = (HoaDon*)malloc(sizeof(HoaDon));
-    if (!hd) {
-        wprintf(L"Lỗi cấp phát bộ nhớ!\n");
-        return;
-    }
-
-    wcscpy_s(hd->ma_hoa_don, MAX_ID, ma_hoa_don);
-    wcscpy_s(hd->ma_khach_hang, MAX_ID, ma_khach_hang);
-    wcscpy_s(hd->ma_phong, MAX_ID, ma_phong);
-    hd->tong_tien = tong_tien;
-    hd->gio_thue = gio_thue;
-    hd->gio_ra = gio_ra;
-
-    *goc_hoa_don = chenNode(*goc_hoa_don, hd, soSanhHoaDon);
-
-    FILE* file;
-    errno_t err = _wfopen_s(&file, ten_file_hoa_don, L"a,ccs=UTF-8");
-    if (err != 0 || !file) {
-        wprintf(L"Không mở được file %ls để ghi!\n", ten_file_hoa_don);
-    }
-    else {
-        struct tm tm_thue, tm_ra;
-        localtime_s(&tm_thue, &gio_thue);
-        localtime_s(&tm_ra, &gio_ra);
-        wchar_t ngay[26], gio_thue_str[20], gio_ra_str[20];
-        wcsftime(ngay, sizeof(ngay) / sizeof(wchar_t), L"%Y-%m-%d", &tm_thue);
-        wcsftime(gio_thue_str, sizeof(gio_thue_str) / sizeof(wchar_t), L"%H:%M:%S", &tm_thue);
-        wcsftime(gio_ra_str, sizeof(gio_ra_str) / sizeof(wchar_t), L"%H:%M:%S", &tm_ra);
-        fwprintf(file, L"%ls %ls %ls %.2f %ls %ls %ls\n",
-            ma_hoa_don, ma_khach_hang, ma_phong, tong_tien,
-            ngay, gio_thue_str, gio_ra_str);
-        fclose(file);
-    }
-    tangSoLanThuePhongHat(node_ph, ma_phong, ten_file_phong_hat);
-    wprintf(L"Đã thêm hóa đơn %ls thành công!\n", ma_hoa_don);
-}
-
 void timHoaDonTheoMa(Node* goc, Node* cay_chi_tiet_hoa_don, const wchar_t* ma_hoa_don) {
     HoaDon hd_tim = { 0 };
     wcscpy_s(hd_tim.ma_hoa_don, MAX_ID, ma_hoa_don);
@@ -455,4 +253,275 @@ float tinhTongTienChiTiet(Node* goc, const wchar_t* ma_hoa_don) {
     tong += tinhTongTienChiTiet(goc->right, ma_hoa_don);
 
     return tong;
+}
+void batDauThuePhong(Node** goc_hoa_don, Node* cay_khach_hang, Node* cay_phong_hat, const wchar_t* ten_file_hoa_don) {
+    wchar_t ma_hoa_don[MAX_ID];
+    wchar_t so_dien_thoai[15];
+    wchar_t ma_khach_hang[MAX_ID];
+    const wchar_t* ten_file_khach_hang = L"khachhang.txt";
+    const wchar_t* ten_file_phong_hat = L"phonghat.txt";
+
+    Node* last_node = *goc_hoa_don;
+    while (last_node && last_node->right) last_node = last_node->right;
+    taoMaTuDong(L"HD", last_node ? ((HoaDon*)last_node->du_lieu)->ma_hoa_don : NULL, ma_hoa_don, MAX_ID);
+
+    wprintf(L"Nhập số điện thoại khách hàng: ");
+    fgetws(so_dien_thoai, 15, stdin);
+    trimString(so_dien_thoai);
+    if (wcslen(so_dien_thoai) == 0) {
+        wprintf(L"Số điện thoại không được để trống!\n");
+        return;
+    }
+
+    // Tìm hoặc thêm khách hàng
+    const wchar_t* ma_khach_tim_thay = timMaKhachHangTheoSoDienThoai(so_dien_thoai, ten_file_khach_hang);
+    if (ma_khach_tim_thay) {
+        wcscpy_s(ma_khach_hang, MAX_ID, ma_khach_tim_thay);
+        Node* new_cay_khach_hang = themKhachHangMoi(cay_khach_hang, ma_khach_hang, L"", so_dien_thoai, ten_file_khach_hang);
+        if (new_cay_khach_hang != cay_khach_hang) {
+            cay_khach_hang = new_cay_khach_hang;
+        }
+    }
+    else {
+        wprintf(L"Không tìm thấy khách hàng với số điện thoại %ls. Thêm khách hàng mới...\n", so_dien_thoai);
+        wchar_t ten[MAX_NAME];
+        wprintf(L"Nhập tên khách hàng: ");
+        fgetws(ten, MAX_NAME, stdin);
+        trimString(ten);
+        if (wcslen(ten) == 0) {
+            wprintf(L"Tên khách hàng không được để trống!\n");
+            return;
+        }
+        Node* last_kh = cay_khach_hang;
+        while (last_kh && last_kh->right) last_kh = last_kh->right;
+        taoMaTuDong(L"KH", last_kh ? ((KhachHang*)last_kh->du_lieu)->ma_khach_hang : NULL, ma_khach_hang, MAX_ID);
+        Node* new_cay_khach_hang = themKhachHangMoi(cay_khach_hang, ma_khach_hang, ten, so_dien_thoai, ten_file_khach_hang);
+        if (new_cay_khach_hang != cay_khach_hang) {
+            cay_khach_hang = new_cay_khach_hang;
+        }
+        else {
+            wprintf(L"Thêm khách hàng thất bại!\n");
+            return;
+        }
+    }
+
+    wchar_t ma_phong[MAX_ID];
+    wprintf(L"Nhập mã phòng: ");
+    fgetws(ma_phong, MAX_ID, stdin);
+    trimString(ma_phong);
+    if (!kiemTraPhongTrong(cay_phong_hat, ma_phong)) {
+        wprintf(L"Mã phòng %ls không tồn tại hoặc đang được thuê!\n", ma_phong);
+        return;
+    }
+
+    // Nhập ngày thuê và giờ thuê
+    wchar_t ngay_thue_str[20], gio_thue_str[20];
+    int year, month, day, hh, mm, ss;
+    wprintf(L"Nhập ngày thuê (YYYY-MM-DD): ");
+    fgetws(ngay_thue_str, 20, stdin);
+    trimString(ngay_thue_str);
+    if (swscanf_s(ngay_thue_str, L"%d-%d-%d", &year, &month, &day) != 3 ||
+        year < 1900 || month < 1 || month > 12 || day < 1 || day > 31) {
+        wprintf(L"Ngày thuê không hợp lệ!\n");
+        return;
+    }
+    wprintf(L"Nhập giờ thuê (HH:MM:SS): ");
+    fgetws(gio_thue_str, 20, stdin);
+    trimString(gio_thue_str);
+    if (swscanf_s(gio_thue_str, L"%d:%d:%d", &hh, &mm, &ss) != 3 ||
+        hh < 0 || hh > 23 || mm < 0 || mm > 59 || ss < 0 || ss > 59) {
+        wprintf(L"Giờ thuê không hợp lệ!\n");
+        return;
+    }
+
+    struct tm tm_gio_thue = { 0 };
+    tm_gio_thue.tm_year = year - 1900;
+    tm_gio_thue.tm_mon = month - 1;
+    tm_gio_thue.tm_mday = day;
+    tm_gio_thue.tm_hour = hh;
+    tm_gio_thue.tm_min = mm;
+    tm_gio_thue.tm_sec = ss;
+    time_t gio_thue = mktime(&tm_gio_thue);
+    time_t gio_ra = 0; // Will be set in phase 2
+
+    HoaDon* hd = (HoaDon*)malloc(sizeof(HoaDon));
+    if (!hd) {
+        wprintf(L"Lỗi cấp phát bộ nhớ!\n");
+        return;
+    }
+    wcscpy_s(hd->ma_hoa_don, MAX_ID, ma_hoa_don);
+    wcscpy_s(hd->ma_khach_hang, MAX_ID, ma_khach_hang);
+    wcscpy_s(hd->ma_phong, MAX_ID, ma_phong);
+    hd->tong_tien = 0.0; // Will be calculated in phase 2
+    hd->ngay_thue = gio_thue;
+    hd->gio_thue = gio_thue;
+    hd->gio_ra = gio_ra;
+    wcscpy_s(hd->trang_thai, 20, L"wait");
+
+    *goc_hoa_don = chenNode(*goc_hoa_don, hd, soSanhHoaDon);
+
+    capNhatTrangThaiPhong(cay_phong_hat, ma_phong, L"rent", ten_file_phong_hat);
+
+    // Ghi hóa đơn vào file
+    FILE* file;
+    errno_t err = _wfopen_s(&file, ten_file_hoa_don, L"a,ccs=UTF-8");
+    if (err == 0 && file) {
+        struct tm tm_thue;
+        localtime_s(&tm_thue, &gio_thue);
+        wchar_t ngay[26], gio_thue_str[20];
+        wcsftime(ngay, sizeof(ngay) / sizeof(wchar_t), L"%Y-%m-%d", &tm_thue);
+        wcsftime(gio_thue_str, sizeof(gio_thue_str) / sizeof(wchar_t), L"%H:%M:%S", &tm_thue);
+        fwprintf(file, L"%ls %ls %ls %.2f %ls %ls %ls %ls\n",
+            ma_hoa_don, ma_khach_hang, ma_phong, hd->tong_tien, ngay, gio_thue_str, L"", hd->trang_thai);
+        fclose(file);
+    }
+    else {
+        wprintf(L"Không mở được file %ls để ghi!\n", ten_file_hoa_don);
+    }
+
+    wprintf(L"Đã bắt đầu thuê phòng %ls với hóa đơn %ls (Đang chờ)!\n", ma_phong, ma_hoa_don);
+}
+
+void hoanTatThuePhong(Node** goc_hoa_don, Node* cay_phong_hat, Node* cay_hang_hoa, Node** cay_chi_tiet_hoa_don, const wchar_t* ten_file_hoa_don, const wchar_t* ten_file_chi_tiet) {
+    hienThiHoaDonDangCho(*goc_hoa_don, *cay_chi_tiet_hoa_don);
+    wchar_t ma_hoa_don[MAX_ID];
+    wprintf(L"Nhập mã hóa đơn để hoàn tất (Đang chờ): ");
+    fgetws(ma_hoa_don, MAX_ID, stdin);
+    trimString(ma_hoa_don);
+
+    HoaDon hd_tim = { 0 };
+    wcscpy_s(hd_tim.ma_hoa_don, MAX_ID, ma_hoa_don);
+    Node* node_hd = timNode(*goc_hoa_don, &hd_tim, soSanhHoaDon);
+    if (!node_hd || wcscmp(((HoaDon*)node_hd->du_lieu)->trang_thai, L"wait") != 0) {
+        wprintf(L"Hóa đơn %ls không tồn tại hoặc không phải trạng thái Đang chờ!\n", ma_hoa_don);
+        return;
+    }
+    HoaDon* hd = (HoaDon*)node_hd->du_lieu;
+
+    // Cập nhật giờ ra với thời gian hiện tại
+    time_t gio_ra = time(NULL);
+    hd->gio_ra = gio_ra;
+
+    // Tính tiền phòng
+    struct tm tm_gio_thue;
+    localtime_s(&tm_gio_thue, &hd->gio_thue);
+    float hours = (float)(difftime(gio_ra, hd->gio_thue) / 3600.0);
+    PhongHat ph_tim = { 0 };
+    wcscpy_s(ph_tim.ma_phong, MAX_ID, hd->ma_phong);
+    Node* node_ph = timNode(cay_phong_hat, &ph_tim, soSanhPhongHat);
+    if (node_ph) {
+        PhongHat* ph = (PhongHat*)node_ph->du_lieu;
+        int is_after_18 = tm_gio_thue.tm_hour >= 18;
+        if (wcscmp(ph->loai_phong, L"VIP") == 0) {
+            hd->tong_tien = hours * (is_after_18 ? 499000.0f : 299000.0f);
+        }
+        else {
+            hd->tong_tien = hours * (is_after_18 ? 299000.0f : 199000.0f);
+        }
+    }
+
+    // Nhập chi tiết hóa đơn
+    wprintf(L"\nDanh sách hàng hóa:\n");
+    hienThiTatCaHangHoa(cay_hang_hoa);
+    wprintf(L"\nNhập chi tiết hóa đơn (nhập mã hàng '0' để kết thúc):\n");
+    while (1) {
+        wchar_t ma_hang[MAX_ID];
+        wprintf(L"Mã hàng: ");
+        fgetws(ma_hang, MAX_ID, stdin);
+        trimString(ma_hang);
+        if (wcscmp(ma_hang, L"0") == 0) break;
+
+        HangHoa hh_tim = { 0 };
+        wcscpy_s(hh_tim.ma_hang, MAX_ID, ma_hang);
+        Node* node_hh = timNode(cay_hang_hoa, &hh_tim, soSanhHangHoa);
+        if (!node_hh) {
+            wprintf(L"Mã hàng %ls không tồn tại!\n", ma_hang);
+            continue;
+        }
+        HangHoa* hh = (HangHoa*)node_hh->du_lieu;
+        if (!hh) {
+            wprintf(L"Dữ liệu hàng hóa không hợp lệ cho mã %ls!\n", ma_hang);
+            continue;
+        }
+
+        int so_luong;
+        wprintf(L"Số lượng: ");
+        wchar_t input[10];
+        fgetws(input, 10, stdin);
+        if (swscanf_s(input, L"%d", &so_luong) != 1 || so_luong <= 0) {
+            wprintf(L"Số lượng không hợp lệ!\n");
+            continue;
+        }
+
+        float don_gia = hh->gia_tien - hh->giam_gia;
+        if (don_gia < 0) don_gia = 0;
+        themChiTietHoaDonMoi(cay_chi_tiet_hoa_don, ma_hoa_don, ma_hang, so_luong, don_gia, ten_file_chi_tiet);
+        hd->tong_tien += so_luong * don_gia;
+    }
+
+    // Cập nhật trạng thái hóa đơn thành "Đã thanh toán"
+    wcscpy_s(hd->trang_thai, 20, L"Done");
+
+    // Cập nhật trạng thái phòng thành "Đang trống"
+    capNhatTrangThaiPhong(cay_phong_hat, hd->ma_phong, L"empty", L"phonghat.txt");
+
+    // Ghi lại hóa đơn vào file
+    FILE* file;
+    errno_t err = _wfopen_s(&file, ten_file_hoa_don, L"a+,ccs=UTF-8");
+    if (err == 0 && file) {
+        fseek(file, 0, SEEK_SET);
+        wchar_t line[256];
+        FILE* temp_file;
+        _wfopen_s(&temp_file, L"temp_hoa_don.txt", L"w,ccs=UTF-8");
+        if (temp_file) {
+            while (fgetws(line, sizeof(line) / sizeof(wchar_t), file)) {
+                wchar_t ma_hoa_don_file[MAX_ID];
+                swscanf_s(line, L"%ls", ma_hoa_don_file, MAX_ID);
+                if (wcscmp(ma_hoa_don_file, ma_hoa_don) != 0) {
+                    fwprintf(temp_file, L"%ls", line);
+                }
+                else {
+                    struct tm tm_thue, tm_ra;
+                    localtime_s(&tm_thue, &hd->gio_thue);
+                    localtime_s(&tm_ra, &hd->gio_ra);
+                    wchar_t ngay[26], gio_thue_str[20], gio_ra_str[20];
+                    wcsftime(ngay, sizeof(ngay) / sizeof(wchar_t), L"%Y-%m-%d", &tm_thue);
+                    wcsftime(gio_thue_str, sizeof(gio_thue_str) / sizeof(wchar_t), L"%H:%M:%S", &tm_thue);
+                    wcsftime(gio_ra_str, sizeof(gio_ra_str) / sizeof(wchar_t), L"%H:%M:%S", &tm_ra);
+                    fwprintf(temp_file, L"%ls %ls %ls %.2f %ls %ls %ls %ls\n",
+                        hd->ma_hoa_don, hd->ma_khach_hang, hd->ma_phong, hd->tong_tien,
+                        ngay, gio_thue_str, gio_ra_str, hd->trang_thai);
+                }
+            }
+            fclose(file);
+            fclose(temp_file);
+            _wremove(ten_file_hoa_don); // Use _wremove
+            _wrename(L"temp_hoa_don.txt", ten_file_hoa_don); // Use _wrename
+        }
+    }
+    else {
+        wprintf(L"Không mở được file %ls để ghi!\n", ten_file_hoa_don);
+    }
+
+    wprintf(L"Hoàn tất thuê phòng với hóa đơn %ls (Đã thanh toán)!\n", ma_hoa_don);
+}
+
+void hienThiHoaDonDangCho(Node* goc, Node* cay_chi_tiet_hoa_don) {
+    if (!goc) {
+        wprintf(L"Không có hóa đơn nào!\n");
+        return;
+    }
+    wprintf(L"\n===== DANH SÁCH HÓA ĐƠN ĐANG CHỜ =====\n");
+    inThongTinHoaDonDangCho(goc, cay_chi_tiet_hoa_don);
+    wprintf(L"====================================\n");
+}
+void inThongTinHoaDonDangCho(Node* node, Node* cay_chi_tiet_hoa_don) {
+    if (node) {
+        inThongTinHoaDonDangCho(node->left, cay_chi_tiet_hoa_don);
+        HoaDon* hd = (HoaDon*)node->du_lieu;
+        if (wcscmp(hd->trang_thai, L"wait") == 0) {
+            wprintf(L"Hóa đơn: %ls, Phòng: %ls\n", hd->ma_hoa_don, hd->ma_phong);
+        }
+        inThongTinHoaDonDangCho(node->right, cay_chi_tiet_hoa_don);
+    }
 }
