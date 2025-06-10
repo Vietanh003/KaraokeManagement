@@ -138,8 +138,17 @@ void inHangHoa(Node* node) {
         wchar_t giam_gia_vnd[64];
         dinhDangVND(hh->giam_gia, giam_gia_vnd, sizeof(giam_gia_vnd) / sizeof(wchar_t));
 
-        wprintf(L"Mã hàng: %ls, Tên hàng: %ls, Giá tiền: %ls, Giảm giá: %ls\n",
-            hh->ma_hang, hh->ten_hang, gia_vnd, giam_gia_vnd);
+        // Define column widths
+        const int MA_HANG_WIDTH = 10;
+        const int TEN_HANG_WIDTH = 20;
+        const int GIA_WIDTH = 15;
+        const int GIAM_GIA_WIDTH = 15;
+
+        wprintf(L"%-*ls | %-*ls | %-*ls | %-*ls\n",
+            MA_HANG_WIDTH, hh->ma_hang,
+            TEN_HANG_WIDTH, hh->ten_hang,
+            GIA_WIDTH, gia_vnd,
+            GIAM_GIA_WIDTH, giam_gia_vnd);
         inHangHoa(node->right);
     }
 }
@@ -150,8 +159,24 @@ void hienThiTatCaHangHoa(Node* goc) {
         return;
     }
 
-    wprintf(L"\n===== DANH SÁCH TẤT CẢ HÀNG HÓA =====\n");
-  
+    const int MA_HANG_WIDTH = 10;
+    const int TEN_HANG_WIDTH = 20;
+    const int GIA_WIDTH = 15;
+    const int GIAM_GIA_WIDTH = 15;
+
+    wprintf(L"\n===== DANH SÁCH TẤT CẢ HÀNG HÓA Nè =====\n");
+    wprintf(L"%-*ls | %-*ls | %-*ls | %-*ls\n",
+        MA_HANG_WIDTH, L"Mã hàng",
+        TEN_HANG_WIDTH, L"Tên hàng",
+        GIA_WIDTH, L"Giá tiền",
+        GIAM_GIA_WIDTH, L"Giảm giá");
+ 
+    wprintf(L"%-*s | %-*s | %-*s | %-*s\n",
+        MA_HANG_WIDTH, L"----------",
+        TEN_HANG_WIDTH, L"--------------------",
+        GIA_WIDTH, L"---------------",
+        GIAM_GIA_WIDTH, L"---------------");
+
     inHangHoa(goc);
     wprintf(L"======================================\n");
 }
